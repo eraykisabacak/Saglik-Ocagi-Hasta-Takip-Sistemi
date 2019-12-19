@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SOHATSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cikis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dosyano" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="sevktarihi" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="cikissaati" Type="datetime" />
+          <Property Name="odeme" Type="nvarchar" MaxLength="20" />
+          <Property Name="toplamtutar" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="hasta">
+          <Key>
+            <PropertyRef Name="tckimlikno" />
+          </Key>
+          <Property Name="tckimlikno" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="dosyano" Type="nvarchar" MaxLength="10" />
+          <Property Name="ad" Type="nvarchar" MaxLength="15" />
+          <Property Name="soyad" Type="nvarchar" MaxLength="15" />
+          <Property Name="dogumyeri" Type="nvarchar" MaxLength="15" />
+          <Property Name="dogumtarihi" Type="datetime" />
+          <Property Name="babaadi" Type="nvarchar" MaxLength="15" />
+          <Property Name="anneadi" Type="nvarchar" MaxLength="15" />
+          <Property Name="cinsiyet" Type="nvarchar" MaxLength="5" />
+          <Property Name="kangrubu" Type="nvarchar" MaxLength="5" />
+          <Property Name="medenihal" Type="nvarchar" MaxLength="5" />
+          <Property Name="adres" Type="nvarchar" MaxLength="255" />
+          <Property Name="tel" Type="nvarchar" MaxLength="11" />
+          <Property Name="kurumsicilno" Type="nvarchar" MaxLength="10" />
+          <Property Name="kurumadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="yakintel" Type="nvarchar" MaxLength="11" />
+          <Property Name="yakinkurumsicilno" Type="nvarchar" MaxLength="10" />
+          <Property Name="yakinkurumadi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="islem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="islemAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="birimFiyat" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="kullanici">
+          <Key>
+            <PropertyRef Name="kodu" />
+          </Key>
+          <Property Name="kodu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="20" />
+          <Property Name="soyad" Type="nvarchar" MaxLength="20" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="20" />
+          <Property Name="yetki" Type="nvarchar" MaxLength="5" />
+          <Property Name="evtel" Type="nvarchar" MaxLength="11" />
+          <Property Name="ceptel" Type="nvarchar" MaxLength="11" />
+          <Property Name="adres" Type="nvarchar" MaxLength="255" />
+          <Property Name="unvan" Type="nvarchar" MaxLength="15" />
+          <Property Name="isebaslama" Type="datetime" />
+          <Property Name="maas" Type="nvarchar" MaxLength="20" />
+          <Property Name="dogumyeri" Type="nvarchar" MaxLength="50" />
+          <Property Name="annead" Type="nvarchar" MaxLength="20" />
+          <Property Name="babaad" Type="nvarchar" MaxLength="20" />
+          <Property Name="cinsiyet" Type="nvarchar" MaxLength="5" />
+          <Property Name="kangrubu" Type="nvarchar" MaxLength="10" />
+          <Property Name="medenihal" Type="nvarchar" MaxLength="10" />
+          <Property Name="dogumtarihi" Type="datetime" />
+          <Property Name="tckimlikno" Type="nvarchar" MaxLength="11" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="poliklinik">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="poliklinikadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="durum" Type="nvarchar" MaxLength="5" />
+          <Property Name="aciklama" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sevk">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sevktarihi" Type="nvarchar" MaxLength="10" />
+          <Property Name="dosyano" Type="nvarchar" MaxLength="50" />
+          <Property Name="poliklinik" Type="nvarchar" MaxLength="50" />
+          <Property Name="saat" Type="nvarchar" MaxLength="10" />
+          <Property Name="yapilanislem" Type="nvarchar" MaxLength="50" />
+          <Property Name="drkod" Type="char" MaxLength="10" />
+          <Property Name="miktar" Type="char" MaxLength="3" />
+          <Property Name="birimfiyat" Type="nvarchar" MaxLength="20" />
+          <Property Name="sira" Type="nvarchar" MaxLength="3" />
+          <Property Name="toplamtutar" Type="nvarchar" MaxLength="50" />
+          <Property Name="taburcu" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="SOHATSModelStoreContainer">
+          <EntitySet Name="cikis" EntityType="Self.cikis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hasta" EntityType="Self.hasta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="islem" EntityType="Self.islem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kullanici" EntityType="Self.kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="poliklinik" EntityType="Self.poliklinik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sevk" EntityType="Self.sevk" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SOHATSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="hasta">
+          <Key>
+            <PropertyRef Name="tckimlikno" />
+          </Key>
+          <Property Name="tckimlikno" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dosyano" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="soyad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="dogumyeri" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="dogumtarihi" Type="DateTime" Precision="3" />
+          <Property Name="babaadi" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="anneadi" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="cinsiyet" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="kangrubu" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="medenihal" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="adres" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="kurumsicilno" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="kurumadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yakintel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="yakinkurumsicilno" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="yakinkurumadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="islem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="islemAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="birimFiyat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="kullanici">
+          <Key>
+            <PropertyRef Name="kodu" />
+          </Key>
+          <Property Name="kodu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="soyad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="yetki" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="evtel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ceptel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="adres" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="unvan" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="isebaslama" Type="DateTime" Precision="3" />
+          <Property Name="maas" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="dogumyeri" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="annead" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="babaad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="cinsiyet" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="kangrubu" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="medenihal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="dogumtarihi" Type="DateTime" Precision="3" />
+          <Property Name="tckimlikno" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="poliklinik">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="poliklinikadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="durum" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="aciklama" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sevk">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sevktarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="dosyano" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="poliklinik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="saat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="yapilanislem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="drkod" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="miktar" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="birimfiyat" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="sira" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="toplamtutar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="taburcu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SOHATSEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="hasta" EntityType="Self.hasta" />
+          <EntitySet Name="islem" EntityType="Self.islem" />
+          <EntitySet Name="kullanici" EntityType="Self.kullanici" />
+          <EntitySet Name="poliklinik" EntityType="Self.poliklinik" />
+          <EntitySet Name="sevk" EntityType="Self.sevk" />
+          <EntitySet Name="cikis" EntityType="SOHATSModel.cikis" />
+        </EntityContainer>
+        <EntityType Name="cikis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dosyano" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="sevktarihi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cikissaati" Type="DateTime" Precision="3" />
+          <Property Name="odeme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="toplamtutar" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SOHATSModelStoreContainer" CdmEntityContainer="SOHATSEntities2">
+          <EntitySetMapping Name="hasta">
+            <EntityTypeMapping TypeName="SOHATSModel.hasta">
+              <MappingFragment StoreEntitySet="hasta">
+                <ScalarProperty Name="tckimlikno" ColumnName="tckimlikno" />
+                <ScalarProperty Name="dosyano" ColumnName="dosyano" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="dogumyeri" ColumnName="dogumyeri" />
+                <ScalarProperty Name="dogumtarihi" ColumnName="dogumtarihi" />
+                <ScalarProperty Name="babaadi" ColumnName="babaadi" />
+                <ScalarProperty Name="anneadi" ColumnName="anneadi" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="kangrubu" ColumnName="kangrubu" />
+                <ScalarProperty Name="medenihal" ColumnName="medenihal" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="kurumsicilno" ColumnName="kurumsicilno" />
+                <ScalarProperty Name="kurumadi" ColumnName="kurumadi" />
+                <ScalarProperty Name="yakintel" ColumnName="yakintel" />
+                <ScalarProperty Name="yakinkurumsicilno" ColumnName="yakinkurumsicilno" />
+                <ScalarProperty Name="yakinkurumadi" ColumnName="yakinkurumadi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="islem">
+            <EntityTypeMapping TypeName="SOHATSModel.islem">
+              <MappingFragment StoreEntitySet="islem">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="islemAdi" ColumnName="islemAdi" />
+                <ScalarProperty Name="birimFiyat" ColumnName="birimFiyat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kullanici">
+            <EntityTypeMapping TypeName="SOHATSModel.kullanici">
+              <MappingFragment StoreEntitySet="kullanici">
+                <ScalarProperty Name="kodu" ColumnName="kodu" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="yetki" ColumnName="yetki" />
+                <ScalarProperty Name="evtel" ColumnName="evtel" />
+                <ScalarProperty Name="ceptel" ColumnName="ceptel" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="unvan" ColumnName="unvan" />
+                <ScalarProperty Name="isebaslama" ColumnName="isebaslama" />
+                <ScalarProperty Name="maas" ColumnName="maas" />
+                <ScalarProperty Name="dogumyeri" ColumnName="dogumyeri" />
+                <ScalarProperty Name="annead" ColumnName="annead" />
+                <ScalarProperty Name="babaad" ColumnName="babaad" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="kangrubu" ColumnName="kangrubu" />
+                <ScalarProperty Name="medenihal" ColumnName="medenihal" />
+                <ScalarProperty Name="dogumtarihi" ColumnName="dogumtarihi" />
+                <ScalarProperty Name="tckimlikno" ColumnName="tckimlikno" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="poliklinik">
+            <EntityTypeMapping TypeName="SOHATSModel.poliklinik">
+              <MappingFragment StoreEntitySet="poliklinik">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="poliklinikadi" ColumnName="poliklinikadi" />
+                <ScalarProperty Name="durum" ColumnName="durum" />
+                <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sevk">
+            <EntityTypeMapping TypeName="SOHATSModel.sevk">
+              <MappingFragment StoreEntitySet="sevk">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sevktarihi" ColumnName="sevktarihi" />
+                <ScalarProperty Name="dosyano" ColumnName="dosyano" />
+                <ScalarProperty Name="poliklinik" ColumnName="poliklinik" />
+                <ScalarProperty Name="saat" ColumnName="saat" />
+                <ScalarProperty Name="yapilanislem" ColumnName="yapilanislem" />
+                <ScalarProperty Name="drkod" ColumnName="drkod" />
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+                <ScalarProperty Name="birimfiyat" ColumnName="birimfiyat" />
+                <ScalarProperty Name="sira" ColumnName="sira" />
+                <ScalarProperty Name="toplamtutar" ColumnName="toplamtutar" />
+                <ScalarProperty Name="taburcu" ColumnName="taburcu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cikis">
+            <EntityTypeMapping TypeName="SOHATSModel.cikis">
+              <MappingFragment StoreEntitySet="cikis">
+                <ScalarProperty Name="toplamtutar" ColumnName="toplamtutar" />
+                <ScalarProperty Name="odeme" ColumnName="odeme" />
+                <ScalarProperty Name="cikissaati" ColumnName="cikissaati" />
+                <ScalarProperty Name="sevktarihi" ColumnName="sevktarihi" />
+                <ScalarProperty Name="dosyano" ColumnName="dosyano" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
