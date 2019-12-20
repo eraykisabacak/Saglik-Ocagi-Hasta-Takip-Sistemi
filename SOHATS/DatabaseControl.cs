@@ -46,7 +46,14 @@ namespace SOHATS
         {
             using (SOHATSEntities2 context = new SOHATSEntities2())
             {
-                return context.sevk.Where(p => p.dosyano == dosyaNo).First();
+                try{
+                    return context.sevk.Where(p => p.dosyano == dosyaNo).First();
+                }
+                catch (System.InvalidOperationException)
+                {
+                    return new sevk { dosyano = null };
+
+                }
             }
         }
 
@@ -168,7 +175,32 @@ namespace SOHATS
             }
         }
 
-        
-        
+        public kullanici DoktorAdi(int Kodu)
+        {
+            using (SOHATSEntities2 context = new SOHATSEntities2())
+            {
+                return context.kullanici.Where(p => p.kodu == Kodu).First();
+            }
+        }
+
+        public int GetYeniDosyaNumarasi()
+        {
+            using (SOHATSEntities2 context = new SOHATSEntities2())
+            {
+                var hastalar = context.hasta.Max(p => p.dosyano);
+                return Convert.ToInt16(hastalar) + 1;
+            }
+        }
+
+        public void addHasta(hasta hasta)
+        {
+            using (SOHATSEntities2 context = new SOHATSEntities2())
+            {
+                var entity = context.Entry(hasta);
+                entity.State = EntityState.Added;
+                context.SaveChanges();
+            }
+        }
+
     }
 }

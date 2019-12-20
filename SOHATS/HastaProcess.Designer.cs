@@ -352,36 +352,43 @@
             // 
             this.POLİKLİNİK.HeaderText = "POLİKLİNİK";
             this.POLİKLİNİK.Name = "POLİKLİNİK";
+            this.POLİKLİNİK.ReadOnly = true;
             // 
             // SIRANO
             // 
             this.SIRANO.HeaderText = "SIRA NO";
             this.SIRANO.Name = "SIRANO";
+            this.SIRANO.ReadOnly = true;
             // 
             // SAAT
             // 
             this.SAAT.HeaderText = "SAAT";
             this.SAAT.Name = "SAAT";
+            this.SAAT.ReadOnly = true;
             // 
             // YAPILANİSLEM
             // 
             this.YAPILANİSLEM.HeaderText = "YAPILAN İŞLEM";
             this.YAPILANİSLEM.Name = "YAPILANİSLEM";
+            this.YAPILANİSLEM.ReadOnly = true;
             // 
             // DRKODU
             // 
             this.DRKODU.HeaderText = "DR.KODU";
             this.DRKODU.Name = "DRKODU";
+            this.DRKODU.ReadOnly = true;
             // 
             // MİKTAR
             // 
             this.MİKTAR.HeaderText = "MİKTAR";
             this.MİKTAR.Name = "MİKTAR";
+            this.MİKTAR.ReadOnly = true;
             // 
             // BİRİMFİYAT
             // 
             this.BİRİMFİYAT.HeaderText = "BİRİM FİYATI";
             this.BİRİMFİYAT.Name = "BİRİMFİYAT";
+            this.BİRİMFİYAT.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -433,6 +440,7 @@
             this.btnYeni.TabIndex = 31;
             this.btnYeni.Text = "Yeni";
             this.btnYeni.UseVisualStyleBackColor = false;
+            this.btnYeni.Click += new System.EventHandler(this.btnYeni_Click);
             // 
             // btnSecSil
             // 

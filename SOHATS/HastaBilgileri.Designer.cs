@@ -65,9 +65,17 @@
             this.medeniHal = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.btnCikis = new System.Windows.Forms.Button();
-            this.btnYeni = new System.Windows.Forms.Button();
+            this.btnNewKayit = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
+            this.plNew = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnKaydet = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.plHastaBilgi = new System.Windows.Forms.Panel();
+            this.txtIslem = new System.Windows.Forms.Label();
+            this.plNew.SuspendLayout();
+            this.plHastaBilgi.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -323,6 +331,9 @@
             // cinsiyet
             // 
             this.cinsiyet.FormattingEnabled = true;
+            this.cinsiyet.Items.AddRange(new object[] {
+            "BAYAN",
+            "BAY"});
             this.cinsiyet.Location = new System.Drawing.Point(560, 161);
             this.cinsiyet.Name = "cinsiyet";
             this.cinsiyet.Size = new System.Drawing.Size(121, 32);
@@ -331,6 +342,15 @@
             // kanGrubu
             // 
             this.kanGrubu.FormattingEnabled = true;
+            this.kanGrubu.Items.AddRange(new object[] {
+            "0 Rh+",
+            "0 Rh-",
+            "A Rh+",
+            "A Rh-",
+            "B Rh+",
+            "B Rh-",
+            "AB Rh+",
+            "AB Rh-"});
             this.kanGrubu.Location = new System.Drawing.Point(560, 196);
             this.kanGrubu.Name = "kanGrubu";
             this.kanGrubu.Size = new System.Drawing.Size(121, 32);
@@ -348,6 +368,9 @@
             // medeniHal
             // 
             this.medeniHal.FormattingEnabled = true;
+            this.medeniHal.Items.AddRange(new object[] {
+            "EVLİ",
+            "BEKAR"});
             this.medeniHal.Location = new System.Drawing.Point(810, 178);
             this.medeniHal.Name = "medeniHal";
             this.medeniHal.Size = new System.Drawing.Size(111, 32);
@@ -367,31 +390,31 @@
             this.btnCikis.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnCikis.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnCikis.ForeColor = System.Drawing.Color.Black;
-            this.btnCikis.Location = new System.Drawing.Point(800, 464);
+            this.btnCikis.Location = new System.Drawing.Point(772, 3);
             this.btnCikis.Name = "btnCikis";
             this.btnCikis.Size = new System.Drawing.Size(121, 58);
             this.btnCikis.TabIndex = 45;
             this.btnCikis.Text = "Çıkış";
             this.btnCikis.UseVisualStyleBackColor = false;
             // 
-            // btnYeni
+            // btnNewKayit
             // 
-            this.btnYeni.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnYeni.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnYeni.ForeColor = System.Drawing.Color.Black;
-            this.btnYeni.Location = new System.Drawing.Point(22, 464);
-            this.btnYeni.Name = "btnYeni";
-            this.btnYeni.Size = new System.Drawing.Size(121, 58);
-            this.btnYeni.TabIndex = 46;
-            this.btnYeni.Text = "Yeni";
-            this.btnYeni.UseVisualStyleBackColor = false;
+            this.btnNewKayit.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnNewKayit.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnNewKayit.ForeColor = System.Drawing.Color.Black;
+            this.btnNewKayit.Location = new System.Drawing.Point(3, 3);
+            this.btnNewKayit.Name = "btnNewKayit";
+            this.btnNewKayit.Size = new System.Drawing.Size(121, 58);
+            this.btnNewKayit.TabIndex = 46;
+            this.btnNewKayit.Text = "Yeni";
+            this.btnNewKayit.UseVisualStyleBackColor = false;
             // 
             // btnGuncelle
             // 
             this.btnGuncelle.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnGuncelle.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnGuncelle.ForeColor = System.Drawing.Color.Black;
-            this.btnGuncelle.Location = new System.Drawing.Point(156, 464);
+            this.btnGuncelle.Location = new System.Drawing.Point(126, 3);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Size = new System.Drawing.Size(121, 58);
             this.btnGuncelle.TabIndex = 47;
@@ -403,23 +426,89 @@
             this.btnSil.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnSil.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSil.ForeColor = System.Drawing.Color.Black;
-            this.btnSil.Location = new System.Drawing.Point(295, 464);
+            this.btnSil.Location = new System.Drawing.Point(251, 3);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(121, 58);
             this.btnSil.TabIndex = 48;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = false;
             // 
+            // plNew
+            // 
+            this.plNew.Controls.Add(this.txtIslem);
+            this.plNew.Controls.Add(this.button2);
+            this.plNew.Controls.Add(this.btnKaydet);
+            this.plNew.Controls.Add(this.button1);
+            this.plNew.Location = new System.Drawing.Point(22, 522);
+            this.plNew.Name = "plNew";
+            this.plNew.Size = new System.Drawing.Size(899, 68);
+            this.plNew.TabIndex = 49;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(772, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(121, 58);
+            this.button2.TabIndex = 49;
+            this.button2.Text = "Çıkış";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // btnKaydet
+            // 
+            this.btnKaydet.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnKaydet.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKaydet.ForeColor = System.Drawing.Color.Black;
+            this.btnKaydet.Location = new System.Drawing.Point(126, 0);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(121, 58);
+            this.btnKaydet.TabIndex = 50;
+            this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.UseVisualStyleBackColor = false;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(3, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 58);
+            this.button1.TabIndex = 50;
+            this.button1.Text = "Yeni";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // plHastaBilgi
+            // 
+            this.plHastaBilgi.Controls.Add(this.btnNewKayit);
+            this.plHastaBilgi.Controls.Add(this.btnGuncelle);
+            this.plHastaBilgi.Controls.Add(this.btnCikis);
+            this.plHastaBilgi.Controls.Add(this.btnSil);
+            this.plHastaBilgi.Location = new System.Drawing.Point(22, 448);
+            this.plHastaBilgi.Name = "plHastaBilgi";
+            this.plHastaBilgi.Size = new System.Drawing.Size(899, 68);
+            this.plHastaBilgi.TabIndex = 50;
+            // 
+            // txtIslem
+            // 
+            this.txtIslem.AutoSize = true;
+            this.txtIslem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.txtIslem.Location = new System.Drawing.Point(522, 18);
+            this.txtIslem.Name = "txtIslem";
+            this.txtIslem.Size = new System.Drawing.Size(0, 24);
+            this.txtIslem.TabIndex = 51;
+            // 
             // HastaBilgileri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(930, 534);
-            this.Controls.Add(this.btnSil);
-            this.Controls.Add(this.btnGuncelle);
-            this.Controls.Add(this.btnYeni);
-            this.Controls.Add(this.btnCikis);
+            this.ClientSize = new System.Drawing.Size(930, 595);
+            this.Controls.Add(this.plHastaBilgi);
+            this.Controls.Add(this.plNew);
             this.Controls.Add(this.medeniHal);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.kanGrubu);
@@ -457,9 +546,13 @@
             this.Controls.Add(this.txtDosyaNo);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "HastaBilgileri";
             this.Text = "< Hasta Bilgileri >";
+            this.Load += new System.EventHandler(this.HastaBilgileri_Load);
+            this.plNew.ResumeLayout(false);
+            this.plNew.PerformLayout();
+            this.plHastaBilgi.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -504,8 +597,14 @@
         private System.Windows.Forms.ComboBox medeniHal;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnCikis;
-        private System.Windows.Forms.Button btnYeni;
+        private System.Windows.Forms.Button btnNewKayit;
         private System.Windows.Forms.Button btnGuncelle;
         private System.Windows.Forms.Button btnSil;
+        private System.Windows.Forms.Panel plNew;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnKaydet;
+        private System.Windows.Forms.Panel plHastaBilgi;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label txtIslem;
     }
 }

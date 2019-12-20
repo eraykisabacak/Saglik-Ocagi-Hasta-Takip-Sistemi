@@ -39,10 +39,29 @@ namespace SOHATS
                 string dosyaNo = txtDosyaNo.Text;
 
                 hasta hastam = databaseControl.GetHasta(dosyaNo);
-                sevk sevk = databaseControl.GetSevk(dosyaNo);
-                txtHastaAdi.Text = hastam.ad;
-                txtSoyadi.Text = hastam.soyad;
-                txtKurumAdi.Text = hastam.kurumadi;
+                if (hastam == null)
+                {
+                    MessageBox.Show("Hasta Yok");
+                }
+                else
+                {
+                    txtHastaAdi.Text = hastam.ad;
+                    txtSoyadi.Text = hastam.soyad;
+                    txtKurumAdi.Text = hastam.kurumadi;
+                    sevk sevk = databaseControl.GetSevk(dosyaNo);
+                    if (sevk.dosyano == null)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        txtHastaAdi.Text = hastam.ad;
+                        txtSoyadi.Text = hastam.soyad;
+                        txtKurumAdi.Text = hastam.kurumadi;
+                    }
+                }
+                
+                
 
                 List<cikis> cikislar = databaseControl.GetOncekiİslemler(dosyaNo);
                 cbOncekiIslemler.Text = " ";
@@ -95,24 +114,69 @@ namespace SOHATS
 
         private void btnYazdir_Click(object sender, EventArgs e)
         {
+            if(dgwTahlilveİslemler.Rows.Count < 2)
+            {
+                MessageBox.Show("Lütfen veri giriniz");
+                return;
+            }
             printDocument1.Print();
         }
+        
+        Font baslik = new Font("Verdana", 20, FontStyle.Bold);
+        Font govde = new Font("Verdana", 12);
+        SolidBrush brush = new SolidBrush(Color.Black);
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            Bitmap bm = new Bitmap(this.dgwTahlilveİslemler.Width, this.dgwTahlilveİslemler.Height);
-            dgwTahlilveİslemler.DrawToBitmap(bm, new Rectangle(0, 0, this.dgwTahlilveİslemler.Width, this.dgwTahlilveİslemler.Height));
-            e.Graphics.DrawImage(bm, 0, 0);
+            //DGV
+            int j = 800;
+            StringFormat stringFormat = new StringFormat();
+            stringFormat.Alignment = StringAlignment.Near;
+            e.Graphics.DrawString("Rapor Tarih : " + DateTime.Now.Date.ToLongDateString(), govde, brush, 70, 20);
+            e.Graphics.DrawString("Hasta Sevk İşlemleri: " + txtHastaAdi.Text.ToUpper() + " " + txtSoyadi.Text.ToUpper() + " \n- Tahlil ve İşlem Sonuçları", baslik, brush,50,70);
+            e.Graphics.DrawString("Poliklinik       Sıra No     Saat          İşlem     Dr.Kodu     Miktar     Birim", govde, brush, 70, 170);
+            e.Graphics.DrawString("---------------------------------------------------------------------------------", govde, brush, 70, 190);
+            for (int i = 0; i < dgwTahlilveİslemler.Rows.Count; i++)
+            {
+                e.Graphics.DrawString(dgwTahlilveİslemler.Rows[i].Cells[0].Value + "\t" +
+                                      dgwTahlilveİslemler.Rows[i].Cells[1].Value + "\t" + 
+                                      dgwTahlilveİslemler.Rows[i].Cells[2].Value + "\t" +
+                                      dgwTahlilveİslemler.Rows[i].Cells[3].Value + "\t\t" + 
+                                      dgwTahlilveİslemler.Rows[i].Cells[4].Value + "\t" +
+                                      dgwTahlilveİslemler.Rows[i].Cells[5].Value + "\t" + 
+                                      dgwTahlilveİslemler.Rows[i].Cells[6].Value + "\t", 
+                                      govde, brush, 70, 210 + (i * 30));
+                j = i;
+            }
+            e.Graphics.DrawString("  **Toplam Tutar : " + lblTutar.Text, govde, brush, 100, 210 + (j * 30) + 50);
+            kullanici doktor = databaseControl.DoktorAdi(int.Parse(dgwTahlilveİslemler.Rows[0].Cells[4].Value.ToString()));
+            e.Graphics.DrawString("Doktor Adı : " + doktor.ad + " " + doktor.soyad, govde, brush, 70, 38);
+            
         }
 
         private void btnBaskiOnizleme_Click(object sender, EventArgs e)
         {
+            if (dgwTahlilveİslemler.Rows.Count < 2)
+            {
+                MessageBox.Show("Lütfen veri giriniz");
+                return;
+            }
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+            /*
             int height = dgwTahlilveİslemler.Height;
             dgwTahlilveİslemler.Height = dgwTahlilveİslemler.RowCount * dgwTahlilveİslemler.RowTemplate.Height * 2;
             bitmap = new Bitmap(dgwTahlilveİslemler.Width, dgwTahlilveİslemler.Height);
             dgwTahlilveİslemler.DrawToBitmap(bitmap, new Rectangle(0, 0, dgwTahlilveİslemler.Width, dgwTahlilveİslemler.Height));
             dgwTahlilveİslemler.Height = height;
-            printPreviewDialog1.ShowDialog();
+            printPreviewDialog1.ShowDialog();*/
+        }
+
+        private void btnYeni_Click(object sender, EventArgs e)
+        {
+            HastaBilgileri hastaBilgileri = new HastaBilgileri(anaForm,formControl,databaseControl.GetYeniDosyaNumarasi(),"new");
+            hastaBilgileri.MdiParent = anaForm;
+            hastaBilgileri.Visible = true;
         }
     }
 }
