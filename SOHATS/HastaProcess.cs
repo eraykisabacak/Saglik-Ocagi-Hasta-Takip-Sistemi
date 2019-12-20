@@ -87,11 +87,17 @@ namespace SOHATS
                 MessageBox.Show("Lütfen bir tarih seçiniz");
                 return;
             }
+            GetTahlil();
+
+        }
+
+        private void GetTahlil()
+        {
             string dosyaNo = txtDosyaNo.Text;
             string tarih = cbOncekiIslemler.Text;
             int miktar = 0;
 
-            List <sevk> sevkler = databaseControl.GetYapilanTahlilİslemler(dosyaNo,tarih);
+            List<sevk> sevkler = databaseControl.GetYapilanTahlilİslemler(dosyaNo, tarih);
             foreach (sevk sevk in sevkler)
             {
                 dgwTahlilveİslemler.Rows.Add(sevk.poliklinik,
@@ -100,16 +106,18 @@ namespace SOHATS
                                              sevk.yapilanislem,
                                              sevk.drkod,
                                              sevk.miktar,
-                                             sevk.birimfiyat);
-                if (sevk.taburcu.ToUpper() == "TRUE")
+                                             sevk.birimfiyat,
+                                             sevk.id);
+
+                if (sevk.taburcu != null && sevk.taburcu.ToUpper() == "TRUE")
                 {
                     MessageBox.Show("Hasta bu sevkten taburcu edilmiştir");
                 }
                 miktar += Convert.ToInt32(sevk.birimfiyat);
             }
-            lblTutar.Text = miktar + " YTL";
-
+            lblTutar.Text = miktar + " TL";
         }
+
         Bitmap bitmap;
 
         private void btnYazdir_Click(object sender, EventArgs e)
@@ -174,9 +182,73 @@ namespace SOHATS
 
         private void btnYeni_Click(object sender, EventArgs e)
         {
+            Temizle();
             HastaBilgileri hastaBilgileri = new HastaBilgileri(anaForm,formControl,databaseControl.GetYeniDosyaNumarasi(),"new");
             hastaBilgileri.MdiParent = anaForm;
             hastaBilgileri.Visible = true;
+        }
+
+        private void Temizle()
+        {
+            txtDosyaNo.Text = "";
+            dtpSevkTarihi.Value = DateTime.Today;
+            cbOncekiIslemler.Text = "";
+            txtHastaAdi.Text = "";
+            txtSoyadi.Text = "";
+            txtKurumAdi.Text = "";
+            cbPoliklinik.Text = "";
+            txtSiraNo.Text = "";
+            cbYapilanİslem.Text = "";
+            cbDrKodu.Text = "";
+            dupMiktar.Text = "";
+            txtBirimFiyat.Text = "";
+            dgwTahlilveİslemler.Rows.Clear();
+            lblTutar.Text = "0 TL";
+        }
+
+        private void btnHastaBilgileri_Click(object sender, EventArgs e)
+        {
+            if(txtDosyaNo.Text != "")
+            {
+                HastaBilgileri hastaBilgileri = new HastaBilgileri(anaForm, formControl, int.Parse(txtDosyaNo.Text));
+                hastaBilgileri.MdiParent = anaForm;
+                hastaBilgileri.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Lütfen bir hasta yazınız");
+            }
+        }
+
+        private void btnSecSil_Click(object sender, EventArgs e)
+        {
+            if(dgwTahlilveİslemler.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Lütfen bir satır seçiniz (Polikliniğin Soluna tıklayınız)");
+                return;
+            }
+            foreach (DataGridViewRow drow in dgwTahlilveİslemler.SelectedRows)  
+            {
+                databaseControl.DeleteIslem(new sevk() { id = int.Parse(drow.Cells[7].Value.ToString()) });
+                MessageBox.Show("Seçilen İşlem silinmiştir");
+                dgwTahlilveİslemler.Rows.Clear();
+                GetTahlil();
+            }
+        }
+
+        private void HastaProcess_Load(object sender, EventArgs e)
+        {
+            List<poliklinik> polikliniks = databaseControl.GetPoliklinik(true);
+            foreach(poliklinik poli in polikliniks)
+            {
+                cbPoliklinik.Items.Add(poli.poliklinikadi);
+            }
+
+            List<kullanici> doktorlar = databaseControl.GetKullanici(true);
+            foreach (kullanici doktor in doktorlar)
+            {
+                cbDrKodu.Items.Add(doktor.kodu);
+            }
         }
     }
 }

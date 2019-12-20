@@ -69,11 +69,12 @@
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.btnSil = new System.Windows.Forms.Button();
             this.plNew = new System.Windows.Forms.Panel();
+            this.txtIslem = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.plHastaBilgi = new System.Windows.Forms.Panel();
-            this.txtIslem = new System.Windows.Forms.Label();
+            this.txtIslemGuncelleme = new System.Windows.Forms.Label();
             this.plNew.SuspendLayout();
             this.plHastaBilgi.SuspendLayout();
             this.SuspendLayout();
@@ -113,9 +114,11 @@
             // txtTC
             // 
             this.txtTC.Location = new System.Drawing.Point(649, 21);
+            this.txtTC.MaxLength = 11;
             this.txtTC.Name = "txtTC";
             this.txtTC.Size = new System.Drawing.Size(272, 29);
             this.txtTC.TabIndex = 14;
+            this.txtTC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTC_KeyPress);
             // 
             // label3
             // 
@@ -213,6 +216,7 @@
             this.txtTelefonNo.Name = "txtTelefonNo";
             this.txtTelefonNo.Size = new System.Drawing.Size(272, 29);
             this.txtTelefonNo.TabIndex = 26;
+            this.txtTelefonNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonNo_KeyPress);
             // 
             // label9
             // 
@@ -293,6 +297,7 @@
             this.txtYakinTelefonNo.Name = "txtYakinTelefonNo";
             this.txtYakinTelefonNo.Size = new System.Drawing.Size(272, 29);
             this.txtYakinTelefonNo.TabIndex = 32;
+            this.txtYakinTelefonNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtYakinTelefonNo_KeyPress);
             // 
             // label14
             // 
@@ -396,6 +401,7 @@
             this.btnCikis.TabIndex = 45;
             this.btnCikis.Text = "Çıkış";
             this.btnCikis.UseVisualStyleBackColor = false;
+            this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
             // 
             // btnNewKayit
             // 
@@ -408,6 +414,7 @@
             this.btnNewKayit.TabIndex = 46;
             this.btnNewKayit.Text = "Yeni";
             this.btnNewKayit.UseVisualStyleBackColor = false;
+            this.btnNewKayit.Click += new System.EventHandler(this.btnNewKayit_Click);
             // 
             // btnGuncelle
             // 
@@ -420,6 +427,7 @@
             this.btnGuncelle.TabIndex = 47;
             this.btnGuncelle.Text = "Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnSil
             // 
@@ -432,6 +440,7 @@
             this.btnSil.TabIndex = 48;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // plNew
             // 
@@ -444,6 +453,15 @@
             this.plNew.Size = new System.Drawing.Size(899, 68);
             this.plNew.TabIndex = 49;
             // 
+            // txtIslem
+            // 
+            this.txtIslem.AutoSize = true;
+            this.txtIslem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.txtIslem.Location = new System.Drawing.Point(522, 18);
+            this.txtIslem.Name = "txtIslem";
+            this.txtIslem.Size = new System.Drawing.Size(0, 24);
+            this.txtIslem.TabIndex = 51;
+            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -455,6 +473,7 @@
             this.button2.TabIndex = 49;
             this.button2.Text = "Çıkış";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnKaydet
             // 
@@ -480,9 +499,11 @@
             this.button1.TabIndex = 50;
             this.button1.Text = "Yeni";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // plHastaBilgi
             // 
+            this.plHastaBilgi.Controls.Add(this.txtIslemGuncelleme);
             this.plHastaBilgi.Controls.Add(this.btnNewKayit);
             this.plHastaBilgi.Controls.Add(this.btnGuncelle);
             this.plHastaBilgi.Controls.Add(this.btnCikis);
@@ -492,14 +513,14 @@
             this.plHastaBilgi.Size = new System.Drawing.Size(899, 68);
             this.plHastaBilgi.TabIndex = 50;
             // 
-            // txtIslem
+            // txtIslemGuncelleme
             // 
-            this.txtIslem.AutoSize = true;
-            this.txtIslem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.txtIslem.Location = new System.Drawing.Point(522, 18);
-            this.txtIslem.Name = "txtIslem";
-            this.txtIslem.Size = new System.Drawing.Size(0, 24);
-            this.txtIslem.TabIndex = 51;
+            this.txtIslemGuncelleme.AutoSize = true;
+            this.txtIslemGuncelleme.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.txtIslemGuncelleme.Location = new System.Drawing.Point(521, 21);
+            this.txtIslemGuncelleme.Name = "txtIslemGuncelleme";
+            this.txtIslemGuncelleme.Size = new System.Drawing.Size(0, 24);
+            this.txtIslemGuncelleme.TabIndex = 52;
             // 
             // HastaBilgileri
             // 
@@ -553,6 +574,7 @@
             this.plNew.ResumeLayout(false);
             this.plNew.PerformLayout();
             this.plHastaBilgi.ResumeLayout(false);
+            this.plHastaBilgi.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -606,5 +628,6 @@
         private System.Windows.Forms.Panel plHastaBilgi;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label txtIslem;
+        private System.Windows.Forms.Label txtIslemGuncelleme;
     }
 }

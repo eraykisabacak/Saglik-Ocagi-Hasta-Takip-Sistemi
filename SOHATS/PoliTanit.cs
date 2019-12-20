@@ -41,7 +41,21 @@ namespace SOHATS
             {
                 string poliklinikAdi = cbPoliklinikAdi.Text;
                 poliklinik p = databaseControl.GetPoliklinik(poliklinikAdi);
-                formControl.Open(new PoliklinikPage(p.id, p.poliklinikadi, Convert.ToBoolean(p.durum), p.aciklama));
+                if(p.poliklinikadi == null)
+                {
+                    poliklinik poli = new poliklinik
+                    {
+                        poliklinikadi = poliklinikAdi,
+                        durum = "True",
+                        aciklama = null
+                    };
+                    databaseControl.AddPoliklinik(poli);
+                    formControl.Open(new PoliklinikPage(poli.id, poli.poliklinikadi, Convert.ToBoolean(poli.durum), poli.aciklama));
+                }
+                else
+                {
+                    formControl.Open(new PoliklinikPage(p.id, p.poliklinikadi, Convert.ToBoolean(p.durum), p.aciklama));
+                }
             }
         }
     }

@@ -60,7 +60,7 @@
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.PasswordChar = '*';
             this.txtSifre.Size = new System.Drawing.Size(310, 29);
-            this.txtSifre.TabIndex = 3;
+            this.txtSifre.TabIndex = 2;
             // 
             // label2
             // 
@@ -78,7 +78,7 @@
             this.btnGiris.Location = new System.Drawing.Point(18, 126);
             this.btnGiris.Name = "btnGiris";
             this.btnGiris.Size = new System.Drawing.Size(105, 55);
-            this.btnGiris.TabIndex = 4;
+            this.btnGiris.TabIndex = 3;
             this.btnGiris.Text = "Giriş";
             this.btnGiris.UseVisualStyleBackColor = false;
             this.btnGiris.Click += new System.EventHandler(this.btnGiris_Click);
@@ -90,7 +90,7 @@
             this.btnTemizle.Location = new System.Drawing.Point(129, 126);
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.Size = new System.Drawing.Size(105, 55);
-            this.btnTemizle.TabIndex = 5;
+            this.btnTemizle.TabIndex = 4;
             this.btnTemizle.Text = "Temizle";
             this.btnTemizle.UseVisualStyleBackColor = false;
             this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
@@ -102,7 +102,7 @@
             this.btnCikis.Location = new System.Drawing.Point(349, 126);
             this.btnCikis.Name = "btnCikis";
             this.btnCikis.Size = new System.Drawing.Size(105, 55);
-            this.btnCikis.TabIndex = 6;
+            this.btnCikis.TabIndex = 5;
             this.btnCikis.Text = "Çıkış";
             this.btnCikis.UseVisualStyleBackColor = false;
             this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);

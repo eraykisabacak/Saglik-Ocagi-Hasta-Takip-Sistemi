@@ -81,6 +81,14 @@ namespace SOHATS
             }
         }
 
+        public List<kullanici> GetKullanici(bool doktor)
+        {
+            using (SOHATSEntities2 context = new SOHATSEntities2())
+            {
+                return context.kullanici.Where(p => p.unvan.ToUpper() == "DOKTOR").ToList();
+            }
+        }
+
         public List<sevk> GetYapilanTahlilİslemler(string dosyaNo,string tarih)
         {
             using (SOHATSEntities2 context = new SOHATSEntities2())
@@ -143,17 +151,40 @@ namespace SOHATS
                 var poliks = context.poliklinik.ToList();
                 return poliks;
             }
-            
+        }
+
+        public List<poliklinik> GetPoliklinik(bool deger)
+        {
+            using (SOHATSEntities2 context = new SOHATSEntities2())
+            {
+                return context.poliklinik.Where(p => p.durum.Equals("true")).ToList();
+            }
         }
 
         public poliklinik GetPoliklinik(string poliklinikAdi)
         {
             using (SOHATSEntities2 context = new SOHATSEntities2())
             {
-                return context.poliklinik.Where(p => p.poliklinikadi == poliklinikAdi).First();
+                try
+                {
+                    return context.poliklinik.Where(p => p.poliklinikadi == poliklinikAdi).First();
+                }
+                catch (InvalidOperationException)
+                {
+                    return new poliklinik { poliklinikadi = null };
+                }
             }
         }
 
+        public void AddPoliklinik(poliklinik poliklinik)
+        {
+            using (SOHATSEntities2 context = new SOHATSEntities2())
+            {
+                var entity = context.Entry(poliklinik);
+                entity.State = EntityState.Added;
+                context.SaveChanges();
+            }
+        }
         public void UpdatePoliklinik(poliklinik polik)
         {
             using (SOHATSEntities2 context = new SOHATSEntities2())
@@ -161,7 +192,16 @@ namespace SOHATS
                 var entity = context.Entry(polik);
                 entity.State = EntityState.Modified;
                 context.SaveChanges();
+            }
+        }
 
+        internal void DeleteHasta(hasta hasta)
+        {
+            using (SOHATSEntities2 context = new SOHATSEntities2())
+            {
+                var entity = context.Entry(hasta);
+                entity.State = EntityState.Deleted;
+                context.SaveChanges();
             }
         }
 
@@ -202,5 +242,24 @@ namespace SOHATS
             }
         }
 
+        public void UpdateHasta(hasta hasta)
+        {
+            using (SOHATSEntities2 context = new SOHATSEntities2())
+            {
+                var entity = context.Entry(hasta);
+                entity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        internal void DeleteIslem(sevk sevk)
+        {
+            using (SOHATSEntities2 context = new SOHATSEntities2())
+            {
+                var entity = context.Entry(sevk);
+                entity.State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+        }
     }
 }

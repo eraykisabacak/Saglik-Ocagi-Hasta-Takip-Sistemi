@@ -20,8 +20,8 @@
           <Key>
             <PropertyRef Name="tckimlikno" />
           </Key>
-          <Property Name="tckimlikno" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="dosyano" Type="nvarchar" MaxLength="10" />
+          <Property Name="tckimlikno" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="dosyano" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="ad" Type="nvarchar" MaxLength="15" />
           <Property Name="soyad" Type="nvarchar" MaxLength="15" />
           <Property Name="dogumyeri" Type="nvarchar" MaxLength="15" />
@@ -114,8 +114,8 @@
           <Key>
             <PropertyRef Name="tckimlikno" />
           </Key>
-          <Property Name="tckimlikno" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="dosyano" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tckimlikno" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dosyano" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="soyad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="dogumyeri" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />

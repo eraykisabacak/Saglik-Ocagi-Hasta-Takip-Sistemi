@@ -21,6 +21,42 @@ namespace SOHATS
 
         int dosyaNumarasi;
 
+        public HastaBilgileri(AnaForm anaForm, FormControl formControl, int dosyaNumarasi)
+        {
+            InitializeComponent();
+            this.anaForm = anaForm;
+            this.formControl = formControl;
+            this.dosyaNumarasi = dosyaNumarasi;
+            txtDosyaNo.Enabled = false;
+            txtTC.Enabled = false;
+            plNew.Visible = false;
+            plHastaBilgi.Visible = true;
+            dogumTarihi.MaxDate = DateTime.Today;
+            bilgileriGetir();
+        }
+
+        private void bilgileriGetir()
+        {
+            hasta hasta = databaseControl.GetHasta(dosyaNumarasi.ToString());
+            txtTC.Text = hasta.tckimlikno;
+            txtAd.Text = hasta.ad;
+            txtSoyad.Text = hasta.soyad;
+            txtDogumYeri.Text = hasta.dogumyeri;
+            dogumTarihi.Value = Convert.ToDateTime(hasta.dogumtarihi);
+            txtBabaAdi.Text = hasta.babaadi;
+            txtAnneAdi.Text = hasta.anneadi;
+            cinsiyet.Text = hasta.cinsiyet;
+            kanGrubu.Text = hasta.kangrubu;
+            medeniHal.Text = hasta.medenihal;
+            txtAdres.Text = hasta.adres;
+            txtTelefonNo.Text = hasta.tel;
+            txtKurumSicilNo.Text = hasta.kurumsicilno;
+            txtKurumSicilAdi.Text = hasta.kurumadi;
+            txtYakinTelefonNo.Text = hasta.yakintel;
+            txtYakinKurumSicilNo.Text = hasta.yakinkurumsicilno;
+            txtYakinKurumAdi.Text = hasta.yakinkurumadi;
+        }
+
         public HastaBilgileri(AnaForm anaForm, FormControl formControl,int dosyaNumarasi,string kayit)
         {
             InitializeComponent();
@@ -125,6 +161,91 @@ namespace SOHATS
             }
 
             return uyari.ToString();
+        }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            databaseControl.DeleteHasta(new hasta{ dosyano = txtDosyaNo.Text,tckimlikno = txtTC.Text });
+            MessageBox.Show("Hasta Silindi");
+            this.Close();
+        }
+
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnNewKayit_Click(object sender, EventArgs e)
+        {
+            HastaBilgileri hastaBilgileri = new HastaBilgileri(anaForm, formControl, databaseControl.GetYeniDosyaNumarasi(), "new");
+            hastaBilgileri.MdiParent = anaForm;
+            hastaBilgileri.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            HastaBilgileri hastaBilgileri = new HastaBilgileri(anaForm, formControl, databaseControl.GetYeniDosyaNumarasi(), "new");
+            hastaBilgileri.MdiParent = anaForm;
+            hastaBilgileri.Visible = true;
+        }
+
+        private void txtTC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            sadeceRakamGirisi(e);
+        }
+
+        private void sadeceRakamGirisi(KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtTelefonNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            sadeceRakamGirisi(e);
+        }
+
+        private void txtYakinTelefonNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            sadeceRakamGirisi(e);
+        }
+
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            if (kontrol() != "")
+            {
+                MessageBox.Show(kontrol());
+                return;
+            }
+            hasta hasta = new hasta
+            {
+                tckimlikno = txtTC.Text,
+                dosyano = txtDosyaNo.Text,
+                ad = txtAd.Text,
+                soyad = txtSoyad.Text,
+                dogumyeri = txtDogumYeri.Text,
+                dogumtarihi = Convert.ToDateTime(dogumTarihi.Value),
+                babaadi = txtBabaAdi.Text,
+                anneadi = txtAnneAdi.Text,
+                cinsiyet = cinsiyet.Text,
+                kangrubu = kanGrubu.Text,
+                medenihal = medeniHal.Text,
+                adres = txtAdres.Text,
+
+                tel = txtTelefonNo.Text,
+                kurumsicilno = txtKurumSicilNo.Text,
+                kurumadi = txtKurumSicilAdi.Text,
+                yakintel = txtYakinTelefonNo.Text,
+                yakinkurumsicilno = txtYakinKurumSicilNo.Text,
+                yakinkurumadi = txtYakinKurumAdi.Text
+            };
+            databaseControl.UpdateHasta(hasta);
+            txtIslemGuncelleme.Text = "< İŞLEM TAMAMLANDI >";
         }
     }
 }

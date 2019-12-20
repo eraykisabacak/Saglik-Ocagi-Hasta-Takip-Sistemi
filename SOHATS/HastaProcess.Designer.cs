@@ -64,6 +64,7 @@
             this.DRKODU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MİKTAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BİRİMFİYAT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTutar = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -218,6 +219,7 @@
             this.btnHastaBilgileri.TabIndex = 15;
             this.btnHastaBilgileri.Text = "Hasta Bilgileri";
             this.btnHastaBilgileri.UseVisualStyleBackColor = false;
+            this.btnHastaBilgileri.Click += new System.EventHandler(this.btnHastaBilgileri_Click);
             // 
             // label8
             // 
@@ -341,7 +343,8 @@
             this.YAPILANİSLEM,
             this.DRKODU,
             this.MİKTAR,
-            this.BİRİMFİYAT});
+            this.BİRİMFİYAT,
+            this.id});
             this.dgwTahlilveİslemler.Location = new System.Drawing.Point(10, 30);
             this.dgwTahlilveİslemler.Name = "dgwTahlilveİslemler";
             this.dgwTahlilveİslemler.ReadOnly = true;
@@ -390,6 +393,13 @@
             this.BİRİMFİYAT.Name = "BİRİMFİYAT";
             this.BİRİMFİYAT.ReadOnly = true;
             // 
+            // id
+            // 
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lblTutar);
@@ -410,9 +420,9 @@
             this.lblTutar.ForeColor = System.Drawing.Color.Red;
             this.lblTutar.Location = new System.Drawing.Point(1109, 358);
             this.lblTutar.Name = "lblTutar";
-            this.lblTutar.Size = new System.Drawing.Size(60, 25);
+            this.lblTutar.Size = new System.Drawing.Size(49, 25);
             this.lblTutar.TabIndex = 31;
-            this.lblTutar.Text = "0 YTL";
+            this.lblTutar.Text = "0 TL";
             // 
             // label14
             // 
@@ -453,6 +463,7 @@
             this.btnSecSil.TabIndex = 32;
             this.btnSecSil.Text = "Seç - Sil";
             this.btnSecSil.UseVisualStyleBackColor = false;
+            this.btnSecSil.Click += new System.EventHandler(this.btnSecSil_Click);
             // 
             // btnTaburcu
             // 
@@ -572,6 +583,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "HastaProcess";
             this.Text = "Hasta işlemleri";
+            this.Load += new System.EventHandler(this.HastaProcess_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwTahlilveİslemler)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -611,13 +623,6 @@
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.DomainUpDown dupMiktar;
         private System.Windows.Forms.DataGridView dgwTahlilveİslemler;
-        private System.Windows.Forms.DataGridViewTextBoxColumn POLİKLİNİK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SIRANO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SAAT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn YAPILANİSLEM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DRKODU;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MİKTAR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BİRİMFİYAT;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblTutar;
         private System.Windows.Forms.Label label14;
@@ -630,5 +635,13 @@
         private System.Windows.Forms.TextBox txtDosyaNo;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn POLİKLİNİK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SIRANO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SAAT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn YAPILANİSLEM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DRKODU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MİKTAR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BİRİMFİYAT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }
 }
