@@ -28,9 +28,10 @@ namespace SOHATS
 
         private void btnBul_Click(object sender, EventArgs e)
         {
+            dgwTahlilveİslemler.Rows.Clear();
             if(txtDosyaNo.Text == "")
             {
-                DosyaBul dosyaBul = new DosyaBul();
+                DosyaBul dosyaBul = new DosyaBul(anaForm,formControl);
                 dosyaBul.MdiParent = anaForm;
                 dosyaBul.Visible = true;
             }
@@ -61,14 +62,12 @@ namespace SOHATS
                     }
                 }
                 
-                
-
-                List<cikis> cikislar = databaseControl.GetOncekiİslemler(dosyaNo);
+                List<DateTime> oncekiler = databaseControl.GetOncekiİslemler(dosyaNo);
                 cbOncekiIslemler.Text = " ";
                 cbOncekiIslemler.Items.Clear();
-                foreach (cikis cikis in cikislar)
+                foreach(DateTime dt in oncekiler)
                 {
-                    cbOncekiIslemler.Items.Add(cikis.sevktarihi);
+                    cbOncekiIslemler.Items.Add(dt);
                 }
             }
 
@@ -77,6 +76,10 @@ namespace SOHATS
         private void txtDosyaNo_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            if (Convert.ToInt32(e.KeyChar) == 13)
+            {
+                btnBul_Click(this, new EventArgs());
+            }
         }
 
         private void btnGit_Click(object sender, EventArgs e)
@@ -88,13 +91,12 @@ namespace SOHATS
                 return;
             }
             GetTahlil();
-
         }
 
         private void GetTahlil()
         {
             string dosyaNo = txtDosyaNo.Text;
-            string tarih = cbOncekiIslemler.Text;
+            DateTime tarih = Convert.ToDateTime(cbOncekiIslemler.Text);
             int miktar = 0;
 
             List<sevk> sevkler = databaseControl.GetYapilanTahlilİslemler(dosyaNo, tarih);
@@ -107,18 +109,18 @@ namespace SOHATS
                                              sevk.drkod,
                                              sevk.miktar,
                                              sevk.birimfiyat,
-                                             sevk.id);
-
-                if (sevk.taburcu != null && sevk.taburcu.ToUpper() == "TRUE")
+                                             sevk.id);        
+                miktar += Convert.ToInt32(sevk.birimfiyat);
+            }
+            if(sevkler.Count != 0)
+            {
+                if (sevkler[0].taburcu != null && sevkler[0].taburcu.ToUpper() == "TRUE")
                 {
                     MessageBox.Show("Hasta bu sevkten taburcu edilmiştir");
                 }
-                miktar += Convert.ToInt32(sevk.birimfiyat);
             }
             lblTutar.Text = miktar + " TL";
         }
-
-        Bitmap bitmap;
 
         private void btnYazdir_Click(object sender, EventArgs e)
         {
@@ -128,6 +130,13 @@ namespace SOHATS
                 return;
             }
             printDocument1.Print();
+            PrintDialog yazdir = new PrintDialog();
+            yazdir.Document = printDocument1;
+            yazdir.UseEXDialog = true;
+            if (yazdir.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
         }
         
         Font baslik = new Font("Verdana", 20, FontStyle.Bold);
@@ -136,7 +145,6 @@ namespace SOHATS
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            //DGV
             int j = 800;
             StringFormat stringFormat = new StringFormat();
             stringFormat.Alignment = StringAlignment.Near;
@@ -249,6 +257,117 @@ namespace SOHATS
             {
                 cbDrKodu.Items.Add(doktor.kodu);
             }
+
+            List<islem> islemler = databaseControl.GetIslem();
+            foreach(islem islem in islemler)
+            {
+                cbYapilanİslem.Items.Add(islem.islemAdi);
+            }
+        }
+
+        private void cbPoliklinik_SelectedValueChanged(object sender, EventArgs e)
+        {
+            sevk sevk = databaseControl.Sira(cbPoliklinik.Text);
+
+            if(sevk == null)
+            {
+                txtSiraNo.Text = "1";
+            }
+            else
+            {
+                txtSiraNo.Text = (Convert.ToInt16(sevk.sira) + 1).ToString();
+            }       
+        }
+
+        private void cbYapilanİslem_SelectedValueChanged(object sender, EventArgs e)
+        {
+            islem islem = databaseControl.GetFiyat(cbYapilanİslem.Text);
+            txtBirimFiyat.Text = islem.birimFiyat;
+        }
+
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            if(txtDosyaNo.Text == "")
+            {
+                MessageBox.Show("Lütfen öncelikle hastayı seçiniz");
+                return;
+            }
+            sevk sevk = new sevk()
+            {
+                sevktarihi = DateTime.Today,
+                dosyano = txtDosyaNo.Text,
+                poliklinik = cbPoliklinik.Text,
+                saat = DateTime.Now.Hour + ":" + DateTime.Now.Minute,
+                yapilanislem = cbYapilanİslem.Text,
+                drkod = cbDrKodu.Text,
+                miktar = dupMiktar.Text,
+                birimfiyat = txtBirimFiyat.Text,
+                sira = txtSiraNo.Text,
+                toplamtutar = (int.Parse(txtBirimFiyat.Text) * int.Parse(dupMiktar.Text)).ToString(),
+                taburcu = false.ToString()
+            };
+            databaseControl.AddSevk(sevk);
+            MessageBox.Show("Sevk Eklenmiştir");
+            SevkTemizle();
+            TabloDoldur(sevk);
+        }
+
+        int tutar = 0;
+
+        private void TabloDoldur(sevk sevk)
+        {
+            dgwTahlilveİslemler.Rows.Add(sevk.poliklinik,
+                                         sevk.sira,
+                                         sevk.saat,
+                                         sevk.yapilanislem,
+                                         sevk.drkod,
+                                         sevk.miktar,
+                                         sevk.birimfiyat,
+                                         sevk.id);
+            tutar += int.Parse(sevk.birimfiyat);
+            lblTutar.Text = tutar + " TL";
+        }
+
+        private void SevkTemizle()
+        {
+            cbPoliklinik.Text = "";
+            txtSiraNo.Text = "";
+            cbYapilanİslem.Text = "";
+            cbDrKodu.Text = "";
+            dupMiktar.SelectedItem = 1;
+            txtBirimFiyat.Text = "";
+        }
+
+        private void btnTaburcu_Click(object sender, EventArgs e)
+        {
+            if(txtDosyaNo.Text == "")
+            {
+                MessageBox.Show("Lütfen hastanın dosya numarasını giriniz");
+                return;
+            }
+            if(dgwTahlilveİslemler.Rows.Count < 2)
+            {
+                MessageBox.Show("Lütfen kayıtları giriniz");
+                return;
+            }
+            if (dgwTahlilveİslemler.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Lütfen bir satır seçiniz (Polikliniğin Soluna tıklayınız)");
+                return;
+            }
+            else
+            {
+                //MessageBox.Show("Seçildi" + dgwTahlilveİslemler.SelectedRows);
+                // Datagridviewda olanlar taburcu olmuş mu
+
+                
+            }
+            string tutar = lblTutar.Text;
+            string dosyano = txtDosyaNo.Text;
+            
+            Taburcu dosyaBul = new Taburcu(formControl,tutar,dosyano);
+            dosyaBul.MdiParent = anaForm;
+            dosyaBul.Visible = true;
         }
     }
 }

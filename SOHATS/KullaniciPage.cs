@@ -45,6 +45,10 @@ namespace SOHATS
                     cbUnvan.Items.Add(unvan);
             }
 
+            int kullaniciKodu = databaseControl.GetKullaniciKodu();
+
+            txtKullaniciKodu.Text = (kullaniciKodu + 1).ToString();
+
             if (kullanici == null)
             {
                 return;

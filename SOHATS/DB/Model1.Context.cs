@@ -13,10 +13,10 @@ namespace SOHATS.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SOHATSEntities2 : DbContext
+    public partial class SOHATSEntities3 : DbContext
     {
-        public SOHATSEntities2()
-            : base("name=SOHATSEntities2")
+        public SOHATSEntities3()
+            : base("name=SOHATSEntities3")
         {
         }
     
@@ -25,11 +25,11 @@ namespace SOHATS.DB
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<cikis> cikis { get; set; }
         public virtual DbSet<hasta> hasta { get; set; }
         public virtual DbSet<islem> islem { get; set; }
         public virtual DbSet<kullanici> kullanici { get; set; }
         public virtual DbSet<poliklinik> poliklinik { get; set; }
         public virtual DbSet<sevk> sevk { get; set; }
-        public virtual DbSet<cikis> cikis { get; set; }
     }
 }

@@ -187,14 +187,6 @@ namespace SOHATS
             hastaBilgileri.Visible = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            HastaBilgileri hastaBilgileri = new HastaBilgileri(anaForm, formControl, databaseControl.GetYeniDosyaNumarasi(), "new");
-            hastaBilgileri.MdiParent = anaForm;
-            hastaBilgileri.Visible = true;
-        }
-
         private void txtTC_KeyPress(object sender, KeyPressEventArgs e)
         {
             sadeceRakamGirisi(e);
@@ -246,6 +238,14 @@ namespace SOHATS
             };
             databaseControl.UpdateHasta(hasta);
             txtIslemGuncelleme.Text = "< İŞLEM TAMAMLANDI >";
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            HastaBilgileri hastaBilgileri = new HastaBilgileri(anaForm, formControl, databaseControl.GetYeniDosyaNumarasi(), "new");
+            hastaBilgileri.MdiParent = anaForm;
+            hastaBilgileri.Visible = true;
         }
     }
 }

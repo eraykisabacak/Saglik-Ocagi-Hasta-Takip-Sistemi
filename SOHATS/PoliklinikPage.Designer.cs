@@ -62,6 +62,7 @@
             // txtAciklama
             // 
             this.txtAciklama.Location = new System.Drawing.Point(21, 120);
+            this.txtAciklama.MaxLength = 255;
             this.txtAciklama.Multiline = true;
             this.txtAciklama.Name = "txtAciklama";
             this.txtAciklama.Size = new System.Drawing.Size(355, 172);
@@ -117,6 +118,7 @@
             // txtPoliklinik
             // 
             this.txtPoliklinik.Location = new System.Drawing.Point(146, 20);
+            this.txtPoliklinik.MaxLength = 50;
             this.txtPoliklinik.Name = "txtPoliklinik";
             this.txtPoliklinik.Size = new System.Drawing.Size(230, 29);
             this.txtPoliklinik.TabIndex = 11;

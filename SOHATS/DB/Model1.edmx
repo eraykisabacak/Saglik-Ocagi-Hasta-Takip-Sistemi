@@ -86,8 +86,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="sevktarihi" Type="nvarchar" MaxLength="10" />
-          <Property Name="dosyano" Type="nvarchar" MaxLength="50" />
+          <Property Name="sevktarihi" Type="datetime" Nullable="false" />
+          <Property Name="dosyano" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="poliklinik" Type="nvarchar" MaxLength="50" />
           <Property Name="saat" Type="nvarchar" MaxLength="10" />
           <Property Name="yapilanislem" Type="nvarchar" MaxLength="50" />
@@ -110,6 +110,17 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SOHATSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cikis">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dosyano" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sevktarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cikissaati" Type="DateTime" Precision="3" />
+          <Property Name="odeme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="toplamtutar" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="hasta">
           <Key>
             <PropertyRef Name="tckimlikno" />
@@ -180,8 +191,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="sevktarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="dosyano" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sevktarihi" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="dosyano" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="poliklinik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="saat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="yapilanislem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -192,31 +203,32 @@
           <Property Name="toplamtutar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="taburcu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="SOHATSEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SOHATSEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cikis" EntityType="Self.cikis" />
           <EntitySet Name="hasta" EntityType="Self.hasta" />
           <EntitySet Name="islem" EntityType="Self.islem" />
           <EntitySet Name="kullanici" EntityType="Self.kullanici" />
           <EntitySet Name="poliklinik" EntityType="Self.poliklinik" />
           <EntitySet Name="sevk" EntityType="Self.sevk" />
-          <EntitySet Name="cikis" EntityType="SOHATSModel.cikis" />
         </EntityContainer>
-        <EntityType Name="cikis">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dosyano" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="sevktarihi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="cikissaati" Type="DateTime" Precision="3" />
-          <Property Name="odeme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="toplamtutar" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SOHATSModelStoreContainer" CdmEntityContainer="SOHATSEntities2">
+        <EntityContainerMapping StorageEntityContainer="SOHATSModelStoreContainer" CdmEntityContainer="SOHATSEntities3">
+          <EntitySetMapping Name="cikis">
+            <EntityTypeMapping TypeName="SOHATSModel.cikis">
+              <MappingFragment StoreEntitySet="cikis">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dosyano" ColumnName="dosyano" />
+                <ScalarProperty Name="sevktarihi" ColumnName="sevktarihi" />
+                <ScalarProperty Name="cikissaati" ColumnName="cikissaati" />
+                <ScalarProperty Name="odeme" ColumnName="odeme" />
+                <ScalarProperty Name="toplamtutar" ColumnName="toplamtutar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="hasta">
             <EntityTypeMapping TypeName="SOHATSModel.hasta">
               <MappingFragment StoreEntitySet="hasta">
@@ -301,18 +313,6 @@
                 <ScalarProperty Name="sira" ColumnName="sira" />
                 <ScalarProperty Name="toplamtutar" ColumnName="toplamtutar" />
                 <ScalarProperty Name="taburcu" ColumnName="taburcu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="cikis">
-            <EntityTypeMapping TypeName="SOHATSModel.cikis">
-              <MappingFragment StoreEntitySet="cikis">
-                <ScalarProperty Name="toplamtutar" ColumnName="toplamtutar" />
-                <ScalarProperty Name="odeme" ColumnName="odeme" />
-                <ScalarProperty Name="cikissaati" ColumnName="cikissaati" />
-                <ScalarProperty Name="sevktarihi" ColumnName="sevktarihi" />
-                <ScalarProperty Name="dosyano" ColumnName="dosyano" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

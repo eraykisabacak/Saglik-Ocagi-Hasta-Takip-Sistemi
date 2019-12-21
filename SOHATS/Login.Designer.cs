@@ -50,17 +50,21 @@
             // txtKullanici
             // 
             this.txtKullanici.Location = new System.Drawing.Point(143, 43);
+            this.txtKullanici.MaxLength = 50;
             this.txtKullanici.Name = "txtKullanici";
             this.txtKullanici.Size = new System.Drawing.Size(310, 29);
             this.txtKullanici.TabIndex = 1;
+            this.txtKullanici.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKullanici_KeyPress);
             // 
             // txtSifre
             // 
             this.txtSifre.Location = new System.Drawing.Point(143, 79);
+            this.txtSifre.MaxLength = 20;
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.PasswordChar = '*';
             this.txtSifre.Size = new System.Drawing.Size(310, 29);
             this.txtSifre.TabIndex = 2;
+            this.txtSifre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKullanici_KeyPress);
             // 
             // label2
             // 
@@ -136,6 +140,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Login";
             this.Text = "SOHATS - Login";

@@ -11,40 +11,38 @@ namespace SOHATS
 {
     class DatabaseControl
     {
-        public static SqlConnection _connection;
-        public static SqlCommand _command;
-        public static SqlDataReader _reader;
-
         public DatabaseControl()
         {
-            _connection = new SqlConnection(@"server=(localdb)\mssqllocaldb; Initial Catalog=SOHATS;Integrated Security=true");
-            _command = new SqlCommand();
+
         }
 
-        private void ConnectionControl()
+        public List<bool> kullaniciGirisi(string kullaniciAdi, string sifre)
         {
-            if (_connection.State == ConnectionState.Closed)
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
-                _connection.Open();
+                kullanici kullanici;
+                try
+                {
+                    kullanici = context.kullanici.Where(p => p.username == kullaniciAdi && p.sifre == sifre).First();
+                }
+                catch (System.InvalidOperationException)
+                {
+                    return new List<bool> { false, false };
+                }
+                if(Convert.ToBoolean(kullanici.yetki))
+                {
+                    return new List<bool> { true, true };
+                }
+                else
+                {
+                    return new List<bool> { true, false };
+                }
             }
-        }
-
-        public bool kullaniciGirisi(string kullaniciAdi, string sifre)
-        {
-            ConnectionControl();
-
-            bool durum = false;
-            _command.Connection = _connection;
-            _command.CommandText = "SELECT * FROM kullanici where username='" + kullaniciAdi + "' AND sifre='" + sifre + "'";
-            _reader = _command.ExecuteReader();
-            if (_reader.Read())
-                durum = true;
-            return durum;
         }
 
         public sevk GetSevk(string dosyaNo)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 try{
                     return context.sevk.Where(p => p.dosyano == dosyaNo).First();
@@ -57,17 +55,20 @@ namespace SOHATS
             }
         }
 
-        public List<cikis> GetOncekiİslemler(string dosyaNo)
+        public List<DateTime> GetOncekiİslemler(string dosyaNo)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
-                return context.cikis.Where(p => p.dosyano == dosyaNo).ToList();
+                var sorgu = context.sevk.Where(p => p.dosyano == dosyaNo).Distinct().ToList();
+                var sorgu2 = sorgu.Select(p => p.sevktarihi).Distinct().ToList();
+                
+                return sorgu2;
             }
         }
 
         public hasta GetHasta(string dosyaNo)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 return context.hasta.Where(p => p.dosyano == dosyaNo).First();
             }
@@ -75,31 +76,80 @@ namespace SOHATS
 
         public kullanici GetKullanici(string kullaniciKodu)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 return context.kullanici.Where(p => p.username == kullaniciKodu).First();         
             }
         }
 
+        public int GetKullaniciKodu()
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                return context.kullanici.Max(p => p.kodu);
+            }
+        }
+
         public List<kullanici> GetKullanici(bool doktor)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 return context.kullanici.Where(p => p.unvan.ToUpper() == "DOKTOR").ToList();
             }
         }
 
-        public List<sevk> GetYapilanTahlilİslemler(string dosyaNo,string tarih)
+        public List<islem> GetIslem()
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
+                return context.islem.ToList();
+            }
+        }
+
+        public islem GetFiyat(string islem)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                return context.islem.Where(p => p.islemAdi == islem).First();
+            }
+        }
+
+        public sevk Sira(string poliklinik)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                List<sevk> sevkler = context.sevk.Where(p => p.poliklinik == poliklinik).ToList();
+                sevk sevk = new sevk();
+                foreach(sevk sevki in sevkler)
+                {
+                    sevk.sira = sevki.sira;
+                }
+                return sevk;
+            }
+        }
+
+        public void AddSevk(sevk sevk)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                var entity = context.Entry(sevk);
+                entity.State = EntityState.Added;
+                context.SaveChanges();
+            }
+        }
+
+        public List<sevk> GetYapilanTahlilİslemler(string dosyaNo,DateTime tarih)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                DateTime dt = Convert.ToDateTime(tarih);
                 return context.sevk.Where(p => p.dosyano == dosyaNo && p.sevktarihi == tarih).ToList();
             }
         }
 
         public List<string> GetUnvan()
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 return context.kullanici.Select(x => x.unvan).Distinct().ToList();
             }
@@ -107,7 +157,7 @@ namespace SOHATS
 
         public List<kullanici> GetKullanici()
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var kullanicis = context.kullanici.ToList();
                 return kullanicis;
@@ -116,7 +166,7 @@ namespace SOHATS
 
         public void DeleteKullanici(kullanici kullanici1)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(kullanici1);
                 entity.State = EntityState.Deleted;
@@ -126,7 +176,7 @@ namespace SOHATS
 
         public void UpdateKullanici(kullanici kullanici1)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(kullanici1);
                 entity.State = EntityState.Modified;
@@ -136,7 +186,7 @@ namespace SOHATS
 
         public void AddKullanici(kullanici kullanici1)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(kullanici1);
                 entity.State = EntityState.Added;
@@ -146,7 +196,7 @@ namespace SOHATS
 
         public List<poliklinik> GetPoliklinik()
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var poliks = context.poliklinik.ToList();
                 return poliks;
@@ -155,7 +205,7 @@ namespace SOHATS
 
         public List<poliklinik> GetPoliklinik(bool deger)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 return context.poliklinik.Where(p => p.durum.Equals("true")).ToList();
             }
@@ -163,7 +213,7 @@ namespace SOHATS
 
         public poliklinik GetPoliklinik(string poliklinikAdi)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 try
                 {
@@ -178,7 +228,7 @@ namespace SOHATS
 
         public void AddPoliklinik(poliklinik poliklinik)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(poliklinik);
                 entity.State = EntityState.Added;
@@ -187,7 +237,7 @@ namespace SOHATS
         }
         public void UpdatePoliklinik(poliklinik polik)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(polik);
                 entity.State = EntityState.Modified;
@@ -197,7 +247,7 @@ namespace SOHATS
 
         internal void DeleteHasta(hasta hasta)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(hasta);
                 entity.State = EntityState.Deleted;
@@ -207,7 +257,7 @@ namespace SOHATS
 
         public void DeletePoliklinik(poliklinik polik)
         {
-            using(SOHATSEntities2 context = new SOHATSEntities2())
+            using(SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(polik);
                 entity.State = EntityState.Deleted;
@@ -217,7 +267,7 @@ namespace SOHATS
 
         public kullanici DoktorAdi(int Kodu)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 return context.kullanici.Where(p => p.kodu == Kodu).First();
             }
@@ -225,7 +275,7 @@ namespace SOHATS
 
         public int GetYeniDosyaNumarasi()
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var hastalar = context.hasta.Max(p => p.dosyano);
                 return Convert.ToInt16(hastalar) + 1;
@@ -234,7 +284,7 @@ namespace SOHATS
 
         public void addHasta(hasta hasta)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(hasta);
                 entity.State = EntityState.Added;
@@ -244,7 +294,7 @@ namespace SOHATS
 
         public void UpdateHasta(hasta hasta)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(hasta);
                 entity.State = EntityState.Modified;
@@ -254,11 +304,97 @@ namespace SOHATS
 
         internal void DeleteIslem(sevk sevk)
         {
-            using (SOHATSEntities2 context = new SOHATSEntities2())
+            using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(sevk);
                 entity.State = EntityState.Deleted;
                 context.SaveChanges();
+            }
+        }
+
+        public hasta GetHastaKimlikNo(string kimlikNo)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                try
+                {
+                    return context.hasta.Where(p => p.tckimlikno == kimlikNo).First();
+                }
+                catch (System.InvalidOperationException)
+                {
+                    return new hasta { tckimlikno = "0" };
+                }
+            }
+        }
+
+        public hasta GetHastaKurumSicilNo(string kurumSicilNo)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                try
+                {
+                    return context.hasta.Where(p => p.kurumsicilno == kurumSicilNo).First();
+                }
+                catch (System.InvalidOperationException)
+                {
+                    return new hasta { tckimlikno = "0" };
+                }
+            }
+        }
+
+        public hasta GetHastaDosyaNo(string dosyaNo)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                try
+                {
+                    return context.hasta.Where(p => p.dosyano == dosyaNo).First();
+                }
+                catch (System.InvalidOperationException)
+                {
+                    return new hasta { tckimlikno = "0" };
+                }
+            }
+        }
+
+        public List<hasta> GetHastaAdSoyad(string ad,string soyad,bool durum)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                try
+                {
+                    if (durum)
+                    {
+                        return context.hasta.Where(p => p.ad == ad && p.soyad == soyad).ToList();
+                    }
+                    else
+                    {
+                        return context.hasta.Where(p => p.ad == ad || p.soyad == soyad).ToList();
+                    }
+                }
+                catch (System.InvalidOperationException)
+                {
+                    List<hasta> hastas = new List<hasta>();
+                    return hastas;
+                }
+            }
+        }
+
+        public void AddCikis(cikis cikis)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                var entity = context.Entry(cikis);
+                entity.State = EntityState.Added;
+                context.SaveChanges();
+            }
+        }
+
+        public int GetCikisId()
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                return (context.cikis.Select(p => p.id).Max()) + 1;
             }
         }
     }

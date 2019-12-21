@@ -15,7 +15,7 @@ namespace SOHATS.DB
     public partial class sevk
     {
         public int id { get; set; }
-        public string sevktarihi { get; set; }
+        public System.DateTime sevktarihi { get; set; }
         public string dosyano { get; set; }
         public string poliklinik { get; set; }
         public string saat { get; set; }

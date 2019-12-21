@@ -28,23 +28,28 @@ namespace SOHATS
             DatabaseControl databaseControl = new DatabaseControl();
             txtKullanici.Text = "k1";
             txtSifre.Text = "212121";
-            if (txtKullanici.Text == "")
+            string kullanici_adi = txtKullanici.Text;
+            string sifre = txtSifre.Text;
+            if (kullanici_adi == "")
             {
                 MessageBox.Show("Lütfen Kullanıcı Adını Giriniz");
                 return;
             }
-            if (txtSifre.Text == "")
+            if (sifre == "")
             {
                 MessageBox.Show("Lütfen Şifre Giriniz");
                 return;
             }
 
-            string kullanici_adi = txtKullanici.Text;
-            string sifre = txtSifre.Text;
+            List<bool> kontrol = databaseControl.kullaniciGirisi(kullanici_adi, sifre);
 
-            if (databaseControl.kullaniciGirisi(kullanici_adi, sifre))
+            if (kontrol[0])
             {
-                //MessageBox.Show("Tebrikler! Başarılı bir şekilde giriş yaptınız.");
+                MessageBox.Show("Tebrikler! Başarılı bir şekilde giriş yaptınız.");
+                if (kontrol[1])
+                {
+                    FormControl.AnaForm.referanslar.Enabled = true;
+                }
                 FormControl.AnaForm.menuStrip1.Enabled = true;
                 FormControl.AnaForm.referanslar.Visible = true;
                 this.Close();
@@ -52,6 +57,8 @@ namespace SOHATS
             else
             {
                 MessageBox.Show("Yanlış Kullanıcı ad ve/veya şifre", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtKullanici.Text = "";
+                txtSifre.Text = "";
             }
         }
 
@@ -64,6 +71,14 @@ namespace SOHATS
         {
             txtKullanici.Clear();
             txtSifre.Clear();
+        }
+
+        private void txtKullanici_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(Convert.ToInt32(e.KeyChar) == 13)
+            {
+                btnGiris_Click(this, new EventArgs());
+            }
         }
     }
 }

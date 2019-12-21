@@ -46,6 +46,7 @@
             // 
             // cbKullaniciKodu
             // 
+            this.cbKullaniciKodu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKullaniciKodu.FormattingEnabled = true;
             this.cbKullaniciKodu.Location = new System.Drawing.Point(154, 45);
             this.cbKullaniciKodu.Name = "cbKullaniciKodu";

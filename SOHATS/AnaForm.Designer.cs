@@ -61,6 +61,7 @@
             this.poliklinikTanitma,
             this.kullanıcıTanıtma,
             this.cikis});
+            this.referanslar.Enabled = false;
             this.referanslar.Name = "referanslar";
             this.referanslar.Size = new System.Drawing.Size(77, 19);
             this.referanslar.Text = "Referanslar";
@@ -106,7 +107,7 @@
             // 
             this.hastaİşlemleriToolStripMenuItem.Name = "hastaİşlemleriToolStripMenuItem";
             this.hastaİşlemleriToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.hastaİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hastaİşlemleriToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.hastaİşlemleriToolStripMenuItem.Text = "Hasta İşlemleri";
             this.hastaİşlemleriToolStripMenuItem.Click += new System.EventHandler(this.hastaİşlemleriToolStripMenuItem_Click);
             // 

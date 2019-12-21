@@ -97,7 +97,7 @@
             this.txtTC.MaxLength = 11;
             this.txtTC.Name = "txtTC";
             this.txtTC.Size = new System.Drawing.Size(334, 29);
-            this.txtTC.TabIndex = 3;
+            this.txtTC.TabIndex = 2;
             this.txtTC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaas_KeyPress);
             // 
             // label2
@@ -114,7 +114,7 @@
             this.txtBabaAdi.Location = new System.Drawing.Point(183, 126);
             this.txtBabaAdi.Name = "txtBabaAdi";
             this.txtBabaAdi.Size = new System.Drawing.Size(334, 29);
-            this.txtBabaAdi.TabIndex = 7;
+            this.txtBabaAdi.TabIndex = 4;
             // 
             // label3
             // 
@@ -130,7 +130,7 @@
             this.txtDogumYeri.Location = new System.Drawing.Point(183, 91);
             this.txtDogumYeri.Name = "txtDogumYeri";
             this.txtDogumYeri.Size = new System.Drawing.Size(334, 29);
-            this.txtDogumYeri.TabIndex = 5;
+            this.txtDogumYeri.TabIndex = 3;
             // 
             // label4
             // 
@@ -147,7 +147,7 @@
             this.txtTelefonNo.MaxLength = 11;
             this.txtTelefonNo.Name = "txtTelefonNo";
             this.txtTelefonNo.Size = new System.Drawing.Size(334, 29);
-            this.txtTelefonNo.TabIndex = 11;
+            this.txtTelefonNo.TabIndex = 6;
             this.txtTelefonNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaas_KeyPress);
             // 
             // label5
@@ -164,7 +164,7 @@
             this.txtAnneAdi.Location = new System.Drawing.Point(183, 161);
             this.txtAnneAdi.Name = "txtAnneAdi";
             this.txtAnneAdi.Size = new System.Drawing.Size(334, 29);
-            this.txtAnneAdi.TabIndex = 9;
+            this.txtAnneAdi.TabIndex = 5;
             // 
             // label6
             // 
@@ -180,7 +180,7 @@
             this.txtGSM.Location = new System.Drawing.Point(183, 231);
             this.txtGSM.Name = "txtGSM";
             this.txtGSM.Size = new System.Drawing.Size(334, 29);
-            this.txtGSM.TabIndex = 13;
+            this.txtGSM.TabIndex = 7;
             this.txtGSM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaas_KeyPress);
             // 
             // label7
@@ -207,14 +207,14 @@
             this.cbUnvan.Location = new System.Drawing.Point(657, 17);
             this.cbUnvan.Name = "cbUnvan";
             this.cbUnvan.Size = new System.Drawing.Size(334, 32);
-            this.cbUnvan.TabIndex = 15;
+            this.cbUnvan.TabIndex = 9;
             // 
             // txtAd
             // 
             this.txtAd.Location = new System.Drawing.Point(657, 55);
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(334, 29);
-            this.txtAd.TabIndex = 17;
+            this.txtAd.TabIndex = 10;
             // 
             // label9
             // 
@@ -230,7 +230,7 @@
             this.txtSoyad.Location = new System.Drawing.Point(657, 88);
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(334, 29);
-            this.txtSoyad.TabIndex = 19;
+            this.txtSoyad.TabIndex = 11;
             // 
             // label10
             // 
@@ -247,7 +247,7 @@
             this.txtMaas.MaxLength = 20;
             this.txtMaas.Name = "txtMaas";
             this.txtMaas.Size = new System.Drawing.Size(334, 29);
-            this.txtMaas.TabIndex = 21;
+            this.txtMaas.TabIndex = 12;
             this.txtMaas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaas_KeyPress);
             // 
             // label11
@@ -265,7 +265,7 @@
             this.dtpİseBaslama.MaxDate = new System.DateTime(2019, 12, 16, 0, 0, 0, 0);
             this.dtpİseBaslama.Name = "dtpİseBaslama";
             this.dtpİseBaslama.Size = new System.Drawing.Size(334, 29);
-            this.dtpİseBaslama.TabIndex = 22;
+            this.dtpİseBaslama.TabIndex = 13;
             this.dtpİseBaslama.Value = new System.DateTime(1995, 7, 12, 22, 45, 0, 0);
             // 
             // label12
@@ -292,7 +292,7 @@
             this.dtpDogumTarihi.MaxDate = new System.DateTime(2019, 12, 16, 0, 0, 0, 0);
             this.dtpDogumTarihi.Name = "dtpDogumTarihi";
             this.dtpDogumTarihi.Size = new System.Drawing.Size(334, 29);
-            this.dtpDogumTarihi.TabIndex = 24;
+            this.dtpDogumTarihi.TabIndex = 14;
             this.dtpDogumTarihi.Value = new System.DateTime(1980, 12, 12, 22, 45, 0, 0);
             // 
             // label14
@@ -313,7 +313,7 @@
             this.cbCinsiyet.Location = new System.Drawing.Point(657, 231);
             this.cbCinsiyet.Name = "cbCinsiyet";
             this.cbCinsiyet.Size = new System.Drawing.Size(106, 32);
-            this.cbCinsiyet.TabIndex = 27;
+            this.cbCinsiyet.TabIndex = 15;
             // 
             // label15
             // 
@@ -333,7 +333,7 @@
             this.cbMedeniHali.Location = new System.Drawing.Point(885, 231);
             this.cbMedeniHali.Name = "cbMedeniHali";
             this.cbMedeniHali.Size = new System.Drawing.Size(106, 32);
-            this.cbMedeniHali.TabIndex = 29;
+            this.cbMedeniHali.TabIndex = 17;
             // 
             // cbKanGrubu
             // 
@@ -350,7 +350,7 @@
             this.cbKanGrubu.Location = new System.Drawing.Point(657, 269);
             this.cbKanGrubu.Name = "cbKanGrubu";
             this.cbKanGrubu.Size = new System.Drawing.Size(106, 32);
-            this.cbKanGrubu.TabIndex = 31;
+            this.cbKanGrubu.TabIndex = 16;
             // 
             // label16
             // 
@@ -369,7 +369,7 @@
             this.cbYetkili.Location = new System.Drawing.Point(283, 271);
             this.cbYetkili.Name = "cbYetkili";
             this.cbYetkili.Size = new System.Drawing.Size(163, 28);
-            this.cbYetkili.TabIndex = 32;
+            this.cbYetkili.TabIndex = 8;
             this.cbYetkili.Text = "yetkili kullanıcı";
             this.cbYetkili.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.cbYetkili.UseVisualStyleBackColor = true;
@@ -380,7 +380,7 @@
             this.txtAdres.Multiline = true;
             this.txtAdres.Name = "txtAdres";
             this.txtAdres.Size = new System.Drawing.Size(808, 130);
-            this.txtAdres.TabIndex = 33;
+            this.txtAdres.TabIndex = 18;
             // 
             // label17
             // 
@@ -400,7 +400,7 @@
             this.groupBox1.Location = new System.Drawing.Point(183, 471);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(808, 66);
-            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             // 
             // txtSifre
@@ -408,7 +408,7 @@
             this.txtSifre.Location = new System.Drawing.Point(546, 18);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.Size = new System.Drawing.Size(217, 29);
-            this.txtSifre.TabIndex = 39;
+            this.txtSifre.TabIndex = 2;
             // 
             // label19
             // 
@@ -424,7 +424,7 @@
             this.txtKullaniciAdi.Location = new System.Drawing.Point(154, 20);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Size = new System.Drawing.Size(217, 29);
-            this.txtKullaniciAdi.TabIndex = 37;
+            this.txtKullaniciAdi.TabIndex = 1;
             // 
             // label18
             // 
@@ -442,7 +442,7 @@
             this.btnTemizle.Location = new System.Drawing.Point(12, 559);
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.Size = new System.Drawing.Size(117, 57);
-            this.btnTemizle.TabIndex = 36;
+            this.btnTemizle.TabIndex = 21;
             this.btnTemizle.Text = "Temizle";
             this.btnTemizle.UseVisualStyleBackColor = false;
             this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
@@ -454,7 +454,7 @@
             this.btnGuncelle.Location = new System.Drawing.Point(160, 559);
             this.btnGuncelle.Name = "btnGuncelle";
             this.btnGuncelle.Size = new System.Drawing.Size(117, 57);
-            this.btnGuncelle.TabIndex = 37;
+            this.btnGuncelle.TabIndex = 22;
             this.btnGuncelle.Text = "Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = false;
             this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
@@ -466,7 +466,7 @@
             this.btnSil.Location = new System.Drawing.Point(309, 559);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(117, 57);
-            this.btnSil.TabIndex = 38;
+            this.btnSil.TabIndex = 23;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = false;
             this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
@@ -478,7 +478,7 @@
             this.btnCikis.Location = new System.Drawing.Point(878, 559);
             this.btnCikis.Name = "btnCikis";
             this.btnCikis.Size = new System.Drawing.Size(117, 57);
-            this.btnCikis.TabIndex = 39;
+            this.btnCikis.TabIndex = 24;
             this.btnCikis.Text = "Çıkış";
             this.btnCikis.UseVisualStyleBackColor = false;
             this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);

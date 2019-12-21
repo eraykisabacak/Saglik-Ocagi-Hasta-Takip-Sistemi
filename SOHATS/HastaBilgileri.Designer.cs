@@ -72,7 +72,7 @@
             this.txtIslem = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnKaydet = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
             this.plHastaBilgi = new System.Windows.Forms.Panel();
             this.txtIslemGuncelleme = new System.Windows.Forms.Label();
             this.plNew.SuspendLayout();
@@ -447,8 +447,8 @@
             this.plNew.Controls.Add(this.txtIslem);
             this.plNew.Controls.Add(this.button2);
             this.plNew.Controls.Add(this.btnKaydet);
-            this.plNew.Controls.Add(this.button1);
-            this.plNew.Location = new System.Drawing.Point(22, 522);
+            this.plNew.Controls.Add(this.btnNew);
+            this.plNew.Location = new System.Drawing.Point(16, 460);
             this.plNew.Name = "plNew";
             this.plNew.Size = new System.Drawing.Size(899, 68);
             this.plNew.TabIndex = 49;
@@ -488,18 +488,18 @@
             this.btnKaydet.UseVisualStyleBackColor = false;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
-            // button1
+            // btnNew
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(3, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 58);
-            this.button1.TabIndex = 50;
-            this.button1.Text = "Yeni";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnNew.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnNew.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnNew.ForeColor = System.Drawing.Color.Black;
+            this.btnNew.Location = new System.Drawing.Point(3, 0);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(121, 58);
+            this.btnNew.TabIndex = 50;
+            this.btnNew.Text = "Yeni";
+            this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // plHastaBilgi
             // 
@@ -527,7 +527,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(930, 595);
+            this.ClientSize = new System.Drawing.Size(930, 526);
             this.Controls.Add(this.plHastaBilgi);
             this.Controls.Add(this.plNew);
             this.Controls.Add(this.medeniHal);
@@ -623,7 +623,7 @@
         private System.Windows.Forms.Button btnGuncelle;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Panel plNew;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.Panel plHastaBilgi;
         private System.Windows.Forms.Button button2;

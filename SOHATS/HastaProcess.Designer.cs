@@ -119,7 +119,7 @@
             this.dtpSevkTarihi.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
             this.dtpSevkTarihi.Name = "dtpSevkTarihi";
             this.dtpSevkTarihi.Size = new System.Drawing.Size(220, 29);
-            this.dtpSevkTarihi.TabIndex = 4;
+            this.dtpSevkTarihi.TabIndex = 3;
             this.dtpSevkTarihi.Value = new System.DateTime(2014, 9, 22, 0, 0, 0, 0);
             // 
             // label3
@@ -137,7 +137,7 @@
             this.cbOncekiIslemler.Location = new System.Drawing.Point(166, 85);
             this.cbOncekiIslemler.Name = "cbOncekiIslemler";
             this.cbOncekiIslemler.Size = new System.Drawing.Size(144, 32);
-            this.cbOncekiIslemler.TabIndex = 6;
+            this.cbOncekiIslemler.TabIndex = 4;
             // 
             // btnGit
             // 
@@ -146,7 +146,7 @@
             this.btnGit.Location = new System.Drawing.Point(317, 85);
             this.btnGit.Name = "btnGit";
             this.btnGit.Size = new System.Drawing.Size(69, 32);
-            this.btnGit.TabIndex = 7;
+            this.btnGit.TabIndex = 5;
             this.btnGit.Text = "Git";
             this.btnGit.UseVisualStyleBackColor = false;
             this.btnGit.Click += new System.EventHandler(this.btnGit_Click);
@@ -165,14 +165,14 @@
             this.txtHastaAdi.Location = new System.Drawing.Point(514, 12);
             this.txtHastaAdi.Name = "txtHastaAdi";
             this.txtHastaAdi.Size = new System.Drawing.Size(272, 29);
-            this.txtHastaAdi.TabIndex = 9;
+            this.txtHastaAdi.TabIndex = 6;
             // 
             // txtSoyadi
             // 
             this.txtSoyadi.Location = new System.Drawing.Point(514, 48);
             this.txtSoyadi.Name = "txtSoyadi";
             this.txtSoyadi.Size = new System.Drawing.Size(272, 29);
-            this.txtSoyadi.TabIndex = 11;
+            this.txtSoyadi.TabIndex = 7;
             // 
             // label5
             // 
@@ -188,7 +188,7 @@
             this.txtKurumAdi.Location = new System.Drawing.Point(514, 86);
             this.txtKurumAdi.Name = "txtKurumAdi";
             this.txtKurumAdi.Size = new System.Drawing.Size(272, 29);
-            this.txtKurumAdi.TabIndex = 13;
+            this.txtKurumAdi.TabIndex = 8;
             // 
             // label6
             // 
@@ -216,7 +216,7 @@
             this.btnHastaBilgileri.Location = new System.Drawing.Point(811, 57);
             this.btnHastaBilgileri.Name = "btnHastaBilgileri";
             this.btnHastaBilgileri.Size = new System.Drawing.Size(388, 60);
-            this.btnHastaBilgileri.TabIndex = 15;
+            this.btnHastaBilgileri.TabIndex = 9;
             this.btnHastaBilgileri.Text = "Hasta Bilgileri";
             this.btnHastaBilgileri.UseVisualStyleBackColor = false;
             this.btnHastaBilgileri.Click += new System.EventHandler(this.btnHastaBilgileri_Click);
@@ -236,7 +236,8 @@
             this.cbPoliklinik.Location = new System.Drawing.Point(4, 169);
             this.cbPoliklinik.Name = "cbPoliklinik";
             this.cbPoliklinik.Size = new System.Drawing.Size(232, 32);
-            this.cbPoliklinik.TabIndex = 17;
+            this.cbPoliklinik.TabIndex = 10;
+            this.cbPoliklinik.SelectedValueChanged += new System.EventHandler(this.cbPoliklinik_SelectedValueChanged);
             // 
             // label9
             // 
@@ -260,24 +261,28 @@
             // 
             this.txtSiraNo.Location = new System.Drawing.Point(242, 168);
             this.txtSiraNo.Name = "txtSiraNo";
+            this.txtSiraNo.ReadOnly = true;
             this.txtSiraNo.Size = new System.Drawing.Size(220, 29);
-            this.txtSiraNo.TabIndex = 20;
+            this.txtSiraNo.TabIndex = 11;
             // 
             // cbYapilanİslem
             // 
+            this.cbYapilanİslem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYapilanİslem.FormattingEnabled = true;
             this.cbYapilanİslem.Location = new System.Drawing.Point(468, 169);
             this.cbYapilanİslem.Name = "cbYapilanİslem";
             this.cbYapilanİslem.Size = new System.Drawing.Size(266, 32);
-            this.cbYapilanİslem.TabIndex = 21;
+            this.cbYapilanİslem.TabIndex = 12;
+            this.cbYapilanİslem.SelectedValueChanged += new System.EventHandler(this.cbYapilanİslem_SelectedValueChanged);
             // 
             // cbDrKodu
             // 
+            this.cbDrKodu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDrKodu.FormattingEnabled = true;
             this.cbDrKodu.Location = new System.Drawing.Point(740, 169);
             this.cbDrKodu.Name = "cbDrKodu";
             this.cbDrKodu.Size = new System.Drawing.Size(93, 32);
-            this.cbDrKodu.TabIndex = 23;
+            this.cbDrKodu.TabIndex = 13;
             // 
             // label11
             // 
@@ -311,7 +316,7 @@
             this.txtBirimFiyat.Location = new System.Drawing.Point(948, 169);
             this.txtBirimFiyat.Name = "txtBirimFiyat";
             this.txtBirimFiyat.Size = new System.Drawing.Size(124, 29);
-            this.txtBirimFiyat.TabIndex = 26;
+            this.txtBirimFiyat.TabIndex = 15;
             // 
             // btnEkle
             // 
@@ -320,16 +325,17 @@
             this.btnEkle.Location = new System.Drawing.Point(1078, 143);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(121, 58);
-            this.btnEkle.TabIndex = 27;
+            this.btnEkle.TabIndex = 16;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // dupMiktar
             // 
             this.dupMiktar.Location = new System.Drawing.Point(858, 169);
             this.dupMiktar.Name = "dupMiktar";
             this.dupMiktar.Size = new System.Drawing.Size(84, 29);
-            this.dupMiktar.TabIndex = 28;
+            this.dupMiktar.TabIndex = 14;
             this.dupMiktar.Text = "1";
             // 
             // dgwTahlilveİslemler
@@ -349,7 +355,7 @@
             this.dgwTahlilveİslemler.Name = "dgwTahlilveİslemler";
             this.dgwTahlilveİslemler.ReadOnly = true;
             this.dgwTahlilveİslemler.Size = new System.Drawing.Size(1179, 316);
-            this.dgwTahlilveİslemler.TabIndex = 29;
+            this.dgwTahlilveİslemler.TabIndex = 17;
             // 
             // POLİKLİNİK
             // 
@@ -447,7 +453,7 @@
             this.btnYeni.Location = new System.Drawing.Point(19, 623);
             this.btnYeni.Name = "btnYeni";
             this.btnYeni.Size = new System.Drawing.Size(121, 58);
-            this.btnYeni.TabIndex = 31;
+            this.btnYeni.TabIndex = 18;
             this.btnYeni.Text = "Yeni";
             this.btnYeni.UseVisualStyleBackColor = false;
             this.btnYeni.Click += new System.EventHandler(this.btnYeni_Click);
@@ -460,7 +466,7 @@
             this.btnSecSil.Location = new System.Drawing.Point(146, 623);
             this.btnSecSil.Name = "btnSecSil";
             this.btnSecSil.Size = new System.Drawing.Size(121, 58);
-            this.btnSecSil.TabIndex = 32;
+            this.btnSecSil.TabIndex = 19;
             this.btnSecSil.Text = "Seç - Sil";
             this.btnSecSil.UseVisualStyleBackColor = false;
             this.btnSecSil.Click += new System.EventHandler(this.btnSecSil_Click);
@@ -473,9 +479,10 @@
             this.btnTaburcu.Location = new System.Drawing.Point(316, 622);
             this.btnTaburcu.Name = "btnTaburcu";
             this.btnTaburcu.Size = new System.Drawing.Size(121, 58);
-            this.btnTaburcu.TabIndex = 33;
+            this.btnTaburcu.TabIndex = 20;
             this.btnTaburcu.Text = "Taburcu";
             this.btnTaburcu.UseVisualStyleBackColor = false;
+            this.btnTaburcu.Click += new System.EventHandler(this.btnTaburcu_Click);
             // 
             // btnYazdir
             // 
@@ -485,7 +492,7 @@
             this.btnYazdir.Location = new System.Drawing.Point(453, 622);
             this.btnYazdir.Name = "btnYazdir";
             this.btnYazdir.Size = new System.Drawing.Size(121, 58);
-            this.btnYazdir.TabIndex = 34;
+            this.btnYazdir.TabIndex = 21;
             this.btnYazdir.Text = "Yazdır";
             this.btnYazdir.UseVisualStyleBackColor = false;
             this.btnYazdir.Click += new System.EventHandler(this.btnYazdir_Click);
@@ -498,7 +505,7 @@
             this.btnBaskiOnizleme.Location = new System.Drawing.Point(581, 622);
             this.btnBaskiOnizleme.Name = "btnBaskiOnizleme";
             this.btnBaskiOnizleme.Size = new System.Drawing.Size(121, 58);
-            this.btnBaskiOnizleme.TabIndex = 35;
+            this.btnBaskiOnizleme.TabIndex = 22;
             this.btnBaskiOnizleme.Text = "Baskı Önizleme";
             this.btnBaskiOnizleme.UseVisualStyleBackColor = false;
             this.btnBaskiOnizleme.Click += new System.EventHandler(this.btnBaskiOnizleme_Click);
@@ -511,7 +518,7 @@
             this.btnCikis.Location = new System.Drawing.Point(1068, 622);
             this.btnCikis.Name = "btnCikis";
             this.btnCikis.Size = new System.Drawing.Size(121, 58);
-            this.btnCikis.TabIndex = 36;
+            this.btnCikis.TabIndex = 23;
             this.btnCikis.Text = "Çıkış";
             this.btnCikis.UseVisualStyleBackColor = false;
             // 
@@ -520,7 +527,7 @@
             this.txtDosyaNo.Location = new System.Drawing.Point(165, 9);
             this.txtDosyaNo.Name = "txtDosyaNo";
             this.txtDosyaNo.Size = new System.Drawing.Size(146, 29);
-            this.txtDosyaNo.TabIndex = 9;
+            this.txtDosyaNo.TabIndex = 1;
             this.txtDosyaNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDosyaNo_KeyPress);
             // 
             // printDocument1
