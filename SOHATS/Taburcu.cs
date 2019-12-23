@@ -13,17 +13,19 @@ namespace SOHATS
 {
     public partial class Taburcu : Form
     {
-        public Taburcu(FormControl formControl,string tutar,string dosyano)
+        public Taburcu(FormControl formControl,string tutar,string dosyano,List<sevk> sevkler)
         {
             InitializeComponent();
             this.formControl = formControl;
             this.tutar = tutar;
             this.dosyano = dosyano;
+            this.sevkler = sevkler;    
         }
 
         FormControl formControl;
         string tutar;
         string dosyano;
+        List<sevk> sevkler;
 
         DatabaseControl databaseControl = new DatabaseControl();
 
@@ -36,10 +38,16 @@ namespace SOHATS
         {
             txtDosyaNo.Text = dosyano;
             txtTutar.Text = tutar;
+            dtpSevkTarihi.Text = sevkler[0].sevktarihi.ToShortDateString();
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
+            if(cbOdeme.Text == "")
+            {
+                MessageBox.Show("Lütfen bir ödeme yöntemi giriniz");
+                return;
+            }
             cikis cikis = new cikis()
             {
                 id = databaseControl.GetCikisId(),
@@ -50,7 +58,16 @@ namespace SOHATS
                 toplamtutar = txtTutar.Text
             };
             databaseControl.AddCikis(cikis);
+
+            foreach(sevk sevk in sevkler)
+            {
+                sevk s = databaseControl.GetSevkId(sevk.id);
+                s.taburcu = "True";
+                databaseControl.UpdateSevk(s,true);
+            }
+
             MessageBox.Show("Çıkışınız Tamamlanmıştır");
+            this.Close();
         }
     }
 }

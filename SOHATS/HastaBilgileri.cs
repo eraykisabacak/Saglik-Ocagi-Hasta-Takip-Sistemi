@@ -107,8 +107,15 @@ namespace SOHATS
                 yakinkurumsicilno = txtYakinKurumSicilNo.Text,
                 yakinkurumadi = txtYakinKurumAdi.Text
             };
-            databaseControl.addHasta(hasta);
-            txtIslem.Text = "< İŞLEM TAMAMLANDI >";
+            bool durum = databaseControl.addHasta(hasta);
+            if (durum)
+            {
+                txtIslem.Text = "< İŞLEM TAMAMLANDI >";
+            }
+            else
+            {
+                MessageBox.Show("Bu TC numarası kayıtlıdır");
+            }
         }
         
 

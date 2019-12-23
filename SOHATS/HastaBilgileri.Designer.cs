@@ -354,8 +354,8 @@
             "A Rh-",
             "B Rh+",
             "B Rh-",
-            "AB Rh+",
-            "AB Rh-"});
+            "ABRh+",
+            "ABRh-"});
             this.kanGrubu.Location = new System.Drawing.Point(560, 196);
             this.kanGrubu.Name = "kanGrubu";
             this.kanGrubu.Size = new System.Drawing.Size(121, 32);

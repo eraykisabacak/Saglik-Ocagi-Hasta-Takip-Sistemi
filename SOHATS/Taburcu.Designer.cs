@@ -145,11 +145,12 @@
             // 
             // cbOdeme
             // 
+            this.cbOdeme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOdeme.FormattingEnabled = true;
             this.cbOdeme.Items.AddRange(new object[] {
             "Nakit",
             "Kredi Kartı - Taksit",
-            "Kredi Kartı - Tek Çekim",
+            "K. Kartı - Tek Çekim",
             "Çek",
             "Senet"});
             this.cbOdeme.Location = new System.Drawing.Point(146, 120);
@@ -177,7 +178,7 @@
             this.Controls.Add(this.btnVazgec);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Taburcu";
             this.Text = "SOHATS - Taburcu";
             this.Load += new System.EventHandler(this.Taburcu_Load);

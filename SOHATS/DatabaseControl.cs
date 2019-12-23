@@ -55,6 +55,38 @@ namespace SOHATS
             }
         }
 
+        public sevk GetSevkLast(string dosyaNo)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                try
+                {
+                    return context.sevk.Where(p => p.dosyano == dosyaNo).Max();
+                }
+                catch (System.InvalidOperationException)
+                {
+                    return new sevk { dosyano = null };
+
+                }
+            }
+        }
+
+        public sevk GetSevkId(int id)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                try
+                {
+                    return context.sevk.Where(p => p.id == id).First();
+                }
+                catch (System.InvalidOperationException)
+                {
+                    return new sevk { dosyano = null };
+
+                }
+            }
+        }
+
         public List<DateTime> GetOncekiİslemler(string dosyaNo)
         {
             using (SOHATSEntities3 context = new SOHATSEntities3())
@@ -118,7 +150,7 @@ namespace SOHATS
         {
             using (SOHATSEntities3 context = new SOHATSEntities3())
             {
-                List<sevk> sevkler = context.sevk.Where(p => p.poliklinik == poliklinik).ToList();
+                List<sevk> sevkler = context.sevk.Where(p => p.poliklinik == poliklinik && p.sevktarihi == DateTime.Today).ToList();
                 sevk sevk = new sevk();
                 foreach(sevk sevki in sevkler)
                 {
@@ -179,6 +211,16 @@ namespace SOHATS
             using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 var entity = context.Entry(kullanici1);
+                entity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
+        }
+
+        public void UpdateSevk(sevk s, bool durum)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                var entity = context.Entry(s);
                 entity.State = EntityState.Modified;
                 context.SaveChanges();
             }
@@ -282,13 +324,22 @@ namespace SOHATS
             }
         }
 
-        public void addHasta(hasta hasta)
+        public bool addHasta(hasta hasta)
         {
             using (SOHATSEntities3 context = new SOHATSEntities3())
             {
-                var entity = context.Entry(hasta);
-                entity.State = EntityState.Added;
-                context.SaveChanges();
+                // try catch System.Data.Entity.Infrastructure.DbUpdateException
+                try
+                {
+                    var entity = context.Entry(hasta);
+                    entity.State = EntityState.Added;
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (System.Data.Entity.Infrastructure.DbUpdateException)
+                {
+                    return false;
+                }
             }
         }
 

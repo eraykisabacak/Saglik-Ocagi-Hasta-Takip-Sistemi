@@ -156,7 +156,7 @@ namespace SOHATS
             {
                 e.Graphics.DrawString(dgwTahlilveİslemler.Rows[i].Cells[0].Value + "\t" +
                                       dgwTahlilveİslemler.Rows[i].Cells[1].Value + "\t" + 
-                                      dgwTahlilveİslemler.Rows[i].Cells[2].Value + "\t" +
+                                      dgwTahlilveİslemler.Rows[i].Cells[2].Value + "\t\t" +
                                       dgwTahlilveİslemler.Rows[i].Cells[3].Value + "\t\t" + 
                                       dgwTahlilveİslemler.Rows[i].Cells[4].Value + "\t" +
                                       dgwTahlilveİslemler.Rows[i].Cells[5].Value + "\t" + 
@@ -208,7 +208,7 @@ namespace SOHATS
             txtSiraNo.Text = "";
             cbYapilanİslem.Text = "";
             cbDrKodu.Text = "";
-            dupMiktar.Text = "";
+            nudMiktar.Text = "";
             txtBirimFiyat.Text = "";
             dgwTahlilveİslemler.Rows.Clear();
             lblTutar.Text = "0 TL";
@@ -292,6 +292,12 @@ namespace SOHATS
                 MessageBox.Show("Lütfen öncelikle hastayı seçiniz");
                 return;
             }
+            bool durum = YeniIslemKontrol();
+            if (!durum)
+            {
+                MessageBox.Show("Lütfen sol taraftaki alanları doldurunuz");
+                return;
+            }
             sevk sevk = new sevk()
             {
                 sevktarihi = DateTime.Today,
@@ -300,16 +306,38 @@ namespace SOHATS
                 saat = DateTime.Now.Hour + ":" + DateTime.Now.Minute,
                 yapilanislem = cbYapilanİslem.Text,
                 drkod = cbDrKodu.Text,
-                miktar = dupMiktar.Text,
+                miktar = nudMiktar.Text,
                 birimfiyat = txtBirimFiyat.Text,
                 sira = txtSiraNo.Text,
-                toplamtutar = (int.Parse(txtBirimFiyat.Text) * int.Parse(dupMiktar.Text)).ToString(),
+                toplamtutar = (int.Parse(txtBirimFiyat.Text) * int.Parse(nudMiktar.Text)).ToString(),
                 taburcu = false.ToString()
             };
             databaseControl.AddSevk(sevk);
             MessageBox.Show("Sevk Eklenmiştir");
             SevkTemizle();
             TabloDoldur(sevk);
+        }
+
+        private bool YeniIslemKontrol()
+        {
+            bool durum = true;
+            if(cbPoliklinik.Text == "")
+            {
+                durum = false;
+            }
+            if(txtSiraNo.Text == "")
+            {
+                durum = false;
+            }
+            if(cbYapilanİslem.Text == "")
+            {
+                durum = false;
+            }
+            if(cbDrKodu.Text == "")
+            {
+                durum = false;
+            }
+            return durum;
         }
 
         int tutar = 0;
@@ -334,13 +362,15 @@ namespace SOHATS
             txtSiraNo.Text = "";
             cbYapilanİslem.Text = "";
             cbDrKodu.Text = "";
-            dupMiktar.SelectedItem = 1;
+            nudMiktar.Value = 1;
             txtBirimFiyat.Text = "";
         }
 
         private void btnTaburcu_Click(object sender, EventArgs e)
         {
-            if(txtDosyaNo.Text == "")
+            List<sevk> sevkler;
+
+            if (txtDosyaNo.Text == "")
             {
                 MessageBox.Show("Lütfen hastanın dosya numarasını giriniz");
                 return;
@@ -357,17 +387,29 @@ namespace SOHATS
             }
             else
             {
-                //MessageBox.Show("Seçildi" + dgwTahlilveİslemler.SelectedRows);
                 // Datagridviewda olanlar taburcu olmuş mu
-
-                
+                string dosyaNo = txtDosyaNo.Text;
+                if(cbOncekiIslemler.Text == "")
+                {
+                    sevkler = databaseControl.GetYapilanTahlilİslemler(dosyaNo, Convert.ToDateTime(DateTime.Now.ToShortDateString()));
+                }
+                else
+                {
+                    DateTime tarih = Convert.ToDateTime(cbOncekiIslemler.Text);
+                    sevkler = databaseControl.GetYapilanTahlilİslemler(dosyaNo, tarih);
+                }
+                if(sevkler.Count != 0 && sevkler[0].taburcu.ToUpper() == "TRUE")
+                {
+                    MessageBox.Show("Hasta zaten taburcu olmuştur");
+                    return;
+                }
             }
             string tutar = lblTutar.Text;
             string dosyano = txtDosyaNo.Text;
             
-            Taburcu dosyaBul = new Taburcu(formControl,tutar,dosyano);
-            dosyaBul.MdiParent = anaForm;
-            dosyaBul.Visible = true;
+            Taburcu taburcu = new Taburcu(formControl,tutar,dosyano,sevkler);
+            taburcu.MdiParent = anaForm;
+            taburcu.Visible = true;
         }
     }
 }

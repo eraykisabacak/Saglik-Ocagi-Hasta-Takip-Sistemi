@@ -55,7 +55,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtBirimFiyat = new System.Windows.Forms.TextBox();
             this.btnEkle = new System.Windows.Forms.Button();
-            this.dupMiktar = new System.Windows.Forms.DomainUpDown();
             this.dgwTahlilveİslemler = new System.Windows.Forms.DataGridView();
             this.POLİKLİNİK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SIRANO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,8 +76,10 @@
             this.txtDosyaNo = new System.Windows.Forms.TextBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.nudMiktar = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTahlilveİslemler)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMiktar)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -133,6 +134,7 @@
             // 
             // cbOncekiIslemler
             // 
+            this.cbOncekiIslemler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOncekiIslemler.FormattingEnabled = true;
             this.cbOncekiIslemler.Location = new System.Drawing.Point(166, 85);
             this.cbOncekiIslemler.Name = "cbOncekiIslemler";
@@ -156,21 +158,25 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(410, 14);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 24);
+            this.label4.Size = new System.Drawing.Size(95, 24);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Hasta Adı";
+            this.label4.Text = "Hasta Adı:";
             // 
             // txtHastaAdi
             // 
             this.txtHastaAdi.Location = new System.Drawing.Point(514, 12);
+            this.txtHastaAdi.MaxLength = 15;
             this.txtHastaAdi.Name = "txtHastaAdi";
+            this.txtHastaAdi.ReadOnly = true;
             this.txtHastaAdi.Size = new System.Drawing.Size(272, 29);
             this.txtHastaAdi.TabIndex = 6;
             // 
             // txtSoyadi
             // 
             this.txtSoyadi.Location = new System.Drawing.Point(514, 48);
+            this.txtSoyadi.MaxLength = 15;
             this.txtSoyadi.Name = "txtSoyadi";
+            this.txtSoyadi.ReadOnly = true;
             this.txtSoyadi.Size = new System.Drawing.Size(272, 29);
             this.txtSoyadi.TabIndex = 7;
             // 
@@ -186,7 +192,9 @@
             // txtKurumAdi
             // 
             this.txtKurumAdi.Location = new System.Drawing.Point(514, 86);
+            this.txtKurumAdi.MaxLength = 50;
             this.txtKurumAdi.Name = "txtKurumAdi";
+            this.txtKurumAdi.ReadOnly = true;
             this.txtKurumAdi.Size = new System.Drawing.Size(272, 29);
             this.txtKurumAdi.TabIndex = 8;
             // 
@@ -232,6 +240,7 @@
             // 
             // cbPoliklinik
             // 
+            this.cbPoliklinik.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPoliklinik.FormattingEnabled = true;
             this.cbPoliklinik.Location = new System.Drawing.Point(4, 169);
             this.cbPoliklinik.Name = "cbPoliklinik";
@@ -260,9 +269,10 @@
             // txtSiraNo
             // 
             this.txtSiraNo.Location = new System.Drawing.Point(242, 168);
+            this.txtSiraNo.Multiline = true;
             this.txtSiraNo.Name = "txtSiraNo";
             this.txtSiraNo.ReadOnly = true;
-            this.txtSiraNo.Size = new System.Drawing.Size(220, 29);
+            this.txtSiraNo.Size = new System.Drawing.Size(220, 33);
             this.txtSiraNo.TabIndex = 11;
             // 
             // cbYapilanİslem
@@ -315,6 +325,7 @@
             // 
             this.txtBirimFiyat.Location = new System.Drawing.Point(948, 169);
             this.txtBirimFiyat.Name = "txtBirimFiyat";
+            this.txtBirimFiyat.ReadOnly = true;
             this.txtBirimFiyat.Size = new System.Drawing.Size(124, 29);
             this.txtBirimFiyat.TabIndex = 15;
             // 
@@ -329,14 +340,6 @@
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = false;
             this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
-            // 
-            // dupMiktar
-            // 
-            this.dupMiktar.Location = new System.Drawing.Point(858, 169);
-            this.dupMiktar.Name = "dupMiktar";
-            this.dupMiktar.Size = new System.Drawing.Size(84, 29);
-            this.dupMiktar.TabIndex = 14;
-            this.dupMiktar.Text = "1";
             // 
             // dgwTahlilveİslemler
             // 
@@ -525,6 +528,7 @@
             // txtDosyaNo
             // 
             this.txtDosyaNo.Location = new System.Drawing.Point(165, 9);
+            this.txtDosyaNo.MaxLength = 10;
             this.txtDosyaNo.Name = "txtDosyaNo";
             this.txtDosyaNo.Size = new System.Drawing.Size(146, 29);
             this.txtDosyaNo.TabIndex = 1;
@@ -544,12 +548,30 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // nudMiktar
+            // 
+            this.nudMiktar.Location = new System.Drawing.Point(851, 170);
+            this.nudMiktar.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudMiktar.Name = "nudMiktar";
+            this.nudMiktar.Size = new System.Drawing.Size(91, 29);
+            this.nudMiktar.TabIndex = 11;
+            this.nudMiktar.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // HastaProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1202, 683);
+            this.Controls.Add(this.nudMiktar);
             this.Controls.Add(this.btnCikis);
             this.Controls.Add(this.btnBaskiOnizleme);
             this.Controls.Add(this.btnYazdir);
@@ -557,7 +579,6 @@
             this.Controls.Add(this.btnSecSil);
             this.Controls.Add(this.btnYeni);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dupMiktar);
             this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.txtBirimFiyat);
             this.Controls.Add(this.label13);
@@ -594,6 +615,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwTahlilveİslemler)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMiktar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -628,7 +650,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtBirimFiyat;
         private System.Windows.Forms.Button btnEkle;
-        private System.Windows.Forms.DomainUpDown dupMiktar;
         private System.Windows.Forms.DataGridView dgwTahlilveİslemler;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblTutar;
@@ -650,5 +671,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MİKTAR;
         private System.Windows.Forms.DataGridViewTextBoxColumn BİRİMFİYAT;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.NumericUpDown nudMiktar;
     }
 }
