@@ -415,16 +415,11 @@ namespace SOHATS
                 {
                     if (durum)
                     {
-                        return context.hasta.Where(p => p.ad == ad && p.soyad == soyad).ToList();
-                        //return context.hasta.Where(p => p.ad.Contains(ad)).Single().ad.ToList();
-                        /*var Sonuc = from SOHATSEntities3 in SOHATSEntities3.hasta
-                                    where p.ad.Contains(ad)
-                                    select ad,soyad;
-                        return Sonuc;*/
+                        return context.hasta.Where(p => p.ad.Contains(ad) && p.soyad.Contains(soyad)).ToList();
                     }
                     else
                     {
-                        return context.hasta.Where(p => p.ad == ad || p.soyad == soyad).ToList();
+                        return context.hasta.Where(p => p.ad.Contains(ad) || p.soyad.Contains(soyad)).ToList();
                     }
                 }
                 catch (System.InvalidOperationException)
@@ -460,8 +455,8 @@ namespace SOHATS
                 List<RaporTaburcu> raporTaburcu = new List<RaporTaburcu>();
 
                 List<sevk> sevks =context.sevk.Where(t => t.sevktarihi > baslangic && 
-                                          t.sevktarihi < bitis)
-                                          .ToList();
+                                                     t.sevktarihi < bitis)
+                                                     .ToList();
 
                 foreach (sevk sevk in sevks)
                 {

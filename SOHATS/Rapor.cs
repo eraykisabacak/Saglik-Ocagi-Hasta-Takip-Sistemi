@@ -60,6 +60,7 @@ namespace SOHATS
             else
             {
                 MessageBox.Show("Lütfen bir durum seçiniz");
+                return;
             }
 
             if(sevks.Count < 1)

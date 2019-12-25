@@ -76,6 +76,7 @@ namespace SOHATS
         private void HastaBilgileri_Load(object sender, EventArgs e)
         {
             txtDosyaNo.Text = dosyaNumarasi.ToString();
+            dogumTarihi.Value = DateTime.Today;
         }
 
         private void btnKaydet_Click(object sender, EventArgs e)

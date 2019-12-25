@@ -18,7 +18,7 @@ namespace SOHATS
             InitializeComponent();
             this.anaForm = anaForm;
             this.formControl = formControl;
-            dtpSevkTarihi.MaxDate = DateTime.Today;
+            dtpSevkTarihi.MinDate = DateTime.Today;
             dtpSevkTarihi.Value = DateTime.Today;
         }
         AnaForm anaForm;
@@ -178,14 +178,6 @@ namespace SOHATS
                 return;
             }
             printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-            /*
-            int height = dgwTahlilveİslemler.Height;
-            dgwTahlilveİslemler.Height = dgwTahlilveİslemler.RowCount * dgwTahlilveİslemler.RowTemplate.Height * 2;
-            bitmap = new Bitmap(dgwTahlilveİslemler.Width, dgwTahlilveİslemler.Height);
-            dgwTahlilveİslemler.DrawToBitmap(bitmap, new Rectangle(0, 0, dgwTahlilveİslemler.Width, dgwTahlilveİslemler.Height));
-            dgwTahlilveİslemler.Height = height;
-            printPreviewDialog1.ShowDialog();*/
         }
 
         private void btnYeni_Click(object sender, EventArgs e)
@@ -410,6 +402,11 @@ namespace SOHATS
             Taburcu taburcu = new Taburcu(formControl,tutar,dosyano,sevkler);
             taburcu.MdiParent = anaForm;
             taburcu.Visible = true;
+        }
+
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

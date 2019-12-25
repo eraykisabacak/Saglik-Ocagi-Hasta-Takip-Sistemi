@@ -91,6 +91,7 @@
             // txtDosyaNo
             // 
             this.txtDosyaNo.Location = new System.Drawing.Point(156, 21);
+            this.txtDosyaNo.MaxLength = 9;
             this.txtDosyaNo.Name = "txtDosyaNo";
             this.txtDosyaNo.Size = new System.Drawing.Size(272, 29);
             this.txtDosyaNo.TabIndex = 10;
@@ -98,6 +99,7 @@
             // txtAd
             // 
             this.txtAd.Location = new System.Drawing.Point(156, 56);
+            this.txtAd.MaxLength = 15;
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(272, 29);
             this.txtAd.TabIndex = 12;
@@ -132,6 +134,7 @@
             // txtSoyad
             // 
             this.txtSoyad.Location = new System.Drawing.Point(649, 56);
+            this.txtSoyad.MaxLength = 15;
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(272, 29);
             this.txtSoyad.TabIndex = 16;
@@ -148,6 +151,7 @@
             // txtBabaAdi
             // 
             this.txtBabaAdi.Location = new System.Drawing.Point(156, 161);
+            this.txtBabaAdi.MaxLength = 15;
             this.txtBabaAdi.Name = "txtBabaAdi";
             this.txtBabaAdi.Size = new System.Drawing.Size(272, 29);
             this.txtBabaAdi.TabIndex = 20;
@@ -164,6 +168,7 @@
             // txtDogumYeri
             // 
             this.txtDogumYeri.Location = new System.Drawing.Point(156, 126);
+            this.txtDogumYeri.MaxLength = 15;
             this.txtDogumYeri.Name = "txtDogumYeri";
             this.txtDogumYeri.Size = new System.Drawing.Size(272, 29);
             this.txtDogumYeri.TabIndex = 18;
@@ -180,6 +185,7 @@
             // txtAnneAdi
             // 
             this.txtAnneAdi.Location = new System.Drawing.Point(156, 196);
+            this.txtAnneAdi.MaxLength = 15;
             this.txtAnneAdi.Name = "txtAnneAdi";
             this.txtAnneAdi.Size = new System.Drawing.Size(272, 29);
             this.txtAnneAdi.TabIndex = 22;
@@ -205,6 +211,7 @@
             // txtAdres
             // 
             this.txtAdres.Location = new System.Drawing.Point(156, 243);
+            this.txtAdres.MaxLength = 255;
             this.txtAdres.Multiline = true;
             this.txtAdres.Name = "txtAdres";
             this.txtAdres.Size = new System.Drawing.Size(765, 94);
@@ -213,6 +220,7 @@
             // txtTelefonNo
             // 
             this.txtTelefonNo.Location = new System.Drawing.Point(156, 343);
+            this.txtTelefonNo.MaxLength = 11;
             this.txtTelefonNo.Name = "txtTelefonNo";
             this.txtTelefonNo.Size = new System.Drawing.Size(272, 29);
             this.txtTelefonNo.TabIndex = 26;
@@ -230,6 +238,7 @@
             // txtKurumSicilNo
             // 
             this.txtKurumSicilNo.Location = new System.Drawing.Point(156, 378);
+            this.txtKurumSicilNo.MaxLength = 10;
             this.txtKurumSicilNo.Name = "txtKurumSicilNo";
             this.txtKurumSicilNo.Size = new System.Drawing.Size(272, 29);
             this.txtKurumSicilNo.TabIndex = 28;
@@ -246,6 +255,7 @@
             // txtKurumSicilAdi
             // 
             this.txtKurumSicilAdi.Location = new System.Drawing.Point(156, 413);
+            this.txtKurumSicilAdi.MaxLength = 50;
             this.txtKurumSicilAdi.Name = "txtKurumSicilAdi";
             this.txtKurumSicilAdi.Size = new System.Drawing.Size(272, 29);
             this.txtKurumSicilAdi.TabIndex = 30;
@@ -262,6 +272,7 @@
             // txtYakinKurumAdi
             // 
             this.txtYakinKurumAdi.Location = new System.Drawing.Point(649, 413);
+            this.txtYakinKurumAdi.MaxLength = 50;
             this.txtYakinKurumAdi.Name = "txtYakinKurumAdi";
             this.txtYakinKurumAdi.Size = new System.Drawing.Size(272, 29);
             this.txtYakinKurumAdi.TabIndex = 36;
@@ -269,15 +280,16 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(544, 416);
+            this.label12.Location = new System.Drawing.Point(463, 416);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(99, 24);
+            this.label12.Size = new System.Drawing.Size(180, 24);
             this.label12.TabIndex = 35;
-            this.label12.Text = "Kurum Adı";
+            this.label12.Text = "Yakınının Kurum Adı";
             // 
             // txtYakinKurumSicilNo
             // 
             this.txtYakinKurumSicilNo.Location = new System.Drawing.Point(649, 378);
+            this.txtYakinKurumSicilNo.MaxLength = 10;
             this.txtYakinKurumSicilNo.Name = "txtYakinKurumSicilNo";
             this.txtYakinKurumSicilNo.Size = new System.Drawing.Size(272, 29);
             this.txtYakinKurumSicilNo.TabIndex = 34;
@@ -285,15 +297,16 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(511, 381);
+            this.label13.Location = new System.Drawing.Point(430, 381);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(135, 24);
+            this.label13.Size = new System.Drawing.Size(216, 24);
             this.label13.TabIndex = 33;
-            this.label13.Text = "Kurum Sicil No";
+            this.label13.Text = "Yakınının Kurum Sicil No";
             // 
             // txtYakinTelefonNo
             // 
             this.txtYakinTelefonNo.Location = new System.Drawing.Point(649, 343);
+            this.txtYakinTelefonNo.MaxLength = 11;
             this.txtYakinTelefonNo.Name = "txtYakinTelefonNo";
             this.txtYakinTelefonNo.Size = new System.Drawing.Size(272, 29);
             this.txtYakinTelefonNo.TabIndex = 32;
@@ -302,7 +315,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(477, 346);
+            this.label14.Location = new System.Drawing.Point(480, 346);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(166, 24);
             this.label14.TabIndex = 31;
@@ -335,6 +348,7 @@
             // 
             // cinsiyet
             // 
+            this.cinsiyet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cinsiyet.FormattingEnabled = true;
             this.cinsiyet.Items.AddRange(new object[] {
             "BAYAN",
@@ -346,6 +360,7 @@
             // 
             // kanGrubu
             // 
+            this.kanGrubu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.kanGrubu.FormattingEnabled = true;
             this.kanGrubu.Items.AddRange(new object[] {
             "0 Rh+",
@@ -372,6 +387,7 @@
             // 
             // medeniHal
             // 
+            this.medeniHal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.medeniHal.FormattingEnabled = true;
             this.medeniHal.Items.AddRange(new object[] {
             "EVLİ",

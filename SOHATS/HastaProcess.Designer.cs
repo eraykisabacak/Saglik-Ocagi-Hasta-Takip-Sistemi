@@ -116,12 +116,12 @@
             // 
             this.dtpSevkTarihi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpSevkTarihi.Location = new System.Drawing.Point(166, 48);
-            this.dtpSevkTarihi.MaxDate = new System.DateTime(2019, 12, 28, 0, 0, 0, 0);
+            this.dtpSevkTarihi.MaxDate = new System.DateTime(2039, 12, 31, 0, 0, 0, 0);
             this.dtpSevkTarihi.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
             this.dtpSevkTarihi.Name = "dtpSevkTarihi";
             this.dtpSevkTarihi.Size = new System.Drawing.Size(220, 29);
             this.dtpSevkTarihi.TabIndex = 3;
-            this.dtpSevkTarihi.Value = new System.DateTime(2014, 9, 22, 0, 0, 0, 0);
+            this.dtpSevkTarihi.Value = new System.DateTime(2019, 12, 25, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -269,6 +269,7 @@
             // txtSiraNo
             // 
             this.txtSiraNo.Location = new System.Drawing.Point(242, 168);
+            this.txtSiraNo.MaxLength = 3;
             this.txtSiraNo.Multiline = true;
             this.txtSiraNo.Name = "txtSiraNo";
             this.txtSiraNo.ReadOnly = true;
@@ -324,6 +325,7 @@
             // txtBirimFiyat
             // 
             this.txtBirimFiyat.Location = new System.Drawing.Point(948, 169);
+            this.txtBirimFiyat.MaxLength = 20;
             this.txtBirimFiyat.Name = "txtBirimFiyat";
             this.txtBirimFiyat.ReadOnly = true;
             this.txtBirimFiyat.Size = new System.Drawing.Size(124, 29);
@@ -524,6 +526,7 @@
             this.btnCikis.TabIndex = 23;
             this.btnCikis.Text = "Çıkış";
             this.btnCikis.UseVisualStyleBackColor = false;
+            this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
             // 
             // txtDosyaNo
             // 

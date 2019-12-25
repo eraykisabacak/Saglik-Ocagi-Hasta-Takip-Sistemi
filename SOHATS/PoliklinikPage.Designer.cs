@@ -121,7 +121,7 @@
             this.txtPoliklinik.MaxLength = 50;
             this.txtPoliklinik.Name = "txtPoliklinik";
             this.txtPoliklinik.Size = new System.Drawing.Size(230, 29);
-            this.txtPoliklinik.TabIndex = 11;
+            this.txtPoliklinik.TabIndex = 1;
             // 
             // PoliklinikPage
             // 

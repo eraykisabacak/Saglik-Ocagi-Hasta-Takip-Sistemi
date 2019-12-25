@@ -86,7 +86,6 @@ namespace SOHATS
                 else
                 {
                     // VEYA
-                    //MessageBox.Show(ad + " " + soyad);
                     List<hasta> hastas = databaseControl.GetHastaAdSoyad(ad, soyad, false);
                     if (hastas.Count < 1)
                     {

@@ -39,8 +39,6 @@
             this.btnYazdir = new System.Windows.Forms.Button();
             this.btnCikis = new System.Windows.Forms.Button();
             this.dgwHasta = new System.Windows.Forms.DataGridView();
-            this.dtpBaslangic = new System.Windows.Forms.DateTimePicker();
-            this.dtpBitis = new System.Windows.Forms.DateTimePicker();
             this.dosyano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soyad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +46,8 @@
             this.poliklinik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doktoradi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doktorsoyadi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtpBaslangic = new System.Windows.Forms.DateTimePicker();
+            this.dtpBitis = new System.Windows.Forms.DateTimePicker();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.btnOnizleme = new System.Windows.Forms.Button();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -78,7 +78,7 @@
             this.rbTaburcuOlmus.Location = new System.Drawing.Point(355, 12);
             this.rbTaburcuOlmus.Name = "rbTaburcuOlmus";
             this.rbTaburcuOlmus.Size = new System.Drawing.Size(159, 28);
-            this.rbTaburcuOlmus.TabIndex = 5;
+            this.rbTaburcuOlmus.TabIndex = 3;
             this.rbTaburcuOlmus.TabStop = true;
             this.rbTaburcuOlmus.Text = "Taburcu Olmuş";
             this.rbTaburcuOlmus.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@
             this.rbTaburcuOlmamis.Location = new System.Drawing.Point(355, 52);
             this.rbTaburcuOlmamis.Name = "rbTaburcuOlmamis";
             this.rbTaburcuOlmamis.Size = new System.Drawing.Size(178, 28);
-            this.rbTaburcuOlmamis.TabIndex = 6;
+            this.rbTaburcuOlmamis.TabIndex = 4;
             this.rbTaburcuOlmamis.TabStop = true;
             this.rbTaburcuOlmamis.Text = "Taburcu Olmamış";
             this.rbTaburcuOlmamis.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             this.rbHepsi.Location = new System.Drawing.Point(355, 92);
             this.rbHepsi.Name = "rbHepsi";
             this.rbHepsi.Size = new System.Drawing.Size(77, 28);
-            this.rbHepsi.TabIndex = 7;
+            this.rbHepsi.TabIndex = 5;
             this.rbHepsi.TabStop = true;
             this.rbHepsi.Text = "Hepsi";
             this.rbHepsi.UseVisualStyleBackColor = true;
@@ -111,7 +111,7 @@
             this.btnSorgula.Location = new System.Drawing.Point(551, 12);
             this.btnSorgula.Name = "btnSorgula";
             this.btnSorgula.Size = new System.Drawing.Size(92, 108);
-            this.btnSorgula.TabIndex = 8;
+            this.btnSorgula.TabIndex = 6;
             this.btnSorgula.Text = "Sorgula";
             this.btnSorgula.UseVisualStyleBackColor = false;
             this.btnSorgula.Click += new System.EventHandler(this.btnSorgula_Click);
@@ -122,7 +122,7 @@
             this.btnTemizle.Location = new System.Drawing.Point(649, 12);
             this.btnTemizle.Name = "btnTemizle";
             this.btnTemizle.Size = new System.Drawing.Size(92, 108);
-            this.btnTemizle.TabIndex = 9;
+            this.btnTemizle.TabIndex = 7;
             this.btnTemizle.Text = "Temizle";
             this.btnTemizle.UseVisualStyleBackColor = false;
             this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
@@ -133,7 +133,7 @@
             this.btnYazdir.Location = new System.Drawing.Point(747, 12);
             this.btnYazdir.Name = "btnYazdir";
             this.btnYazdir.Size = new System.Drawing.Size(92, 108);
-            this.btnYazdir.TabIndex = 10;
+            this.btnYazdir.TabIndex = 8;
             this.btnYazdir.Text = "Yazdır";
             this.btnYazdir.UseVisualStyleBackColor = false;
             this.btnYazdir.Click += new System.EventHandler(this.btnYazdir_Click);
@@ -144,7 +144,7 @@
             this.btnCikis.Location = new System.Drawing.Point(941, 12);
             this.btnCikis.Name = "btnCikis";
             this.btnCikis.Size = new System.Drawing.Size(92, 108);
-            this.btnCikis.TabIndex = 11;
+            this.btnCikis.TabIndex = 10;
             this.btnCikis.Text = "Çıkış";
             this.btnCikis.UseVisualStyleBackColor = false;
             this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
@@ -165,21 +165,7 @@
             this.dgwHasta.Location = new System.Drawing.Point(0, 140);
             this.dgwHasta.Name = "dgwHasta";
             this.dgwHasta.Size = new System.Drawing.Size(1045, 420);
-            this.dgwHasta.TabIndex = 12;
-            // 
-            // dtpBaslangic
-            // 
-            this.dtpBaslangic.Location = new System.Drawing.Point(165, 25);
-            this.dtpBaslangic.Name = "dtpBaslangic";
-            this.dtpBaslangic.Size = new System.Drawing.Size(166, 29);
-            this.dtpBaslangic.TabIndex = 13;
-            // 
-            // dtpBitis
-            // 
-            this.dtpBitis.Location = new System.Drawing.Point(165, 76);
-            this.dtpBitis.Name = "dtpBitis";
-            this.dtpBitis.Size = new System.Drawing.Size(166, 29);
-            this.dtpBitis.TabIndex = 14;
+            this.dgwHasta.TabIndex = 11;
             // 
             // dosyano
             // 
@@ -216,6 +202,20 @@
             this.doktorsoyadi.HeaderText = "Doktor Soyadi";
             this.doktorsoyadi.Name = "doktorsoyadi";
             // 
+            // dtpBaslangic
+            // 
+            this.dtpBaslangic.Location = new System.Drawing.Point(165, 25);
+            this.dtpBaslangic.Name = "dtpBaslangic";
+            this.dtpBaslangic.Size = new System.Drawing.Size(166, 29);
+            this.dtpBaslangic.TabIndex = 1;
+            // 
+            // dtpBitis
+            // 
+            this.dtpBitis.Location = new System.Drawing.Point(165, 76);
+            this.dtpBitis.Name = "dtpBitis";
+            this.dtpBitis.Size = new System.Drawing.Size(166, 29);
+            this.dtpBitis.TabIndex = 2;
+            // 
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
@@ -226,7 +226,7 @@
             this.btnOnizleme.Location = new System.Drawing.Point(845, 12);
             this.btnOnizleme.Name = "btnOnizleme";
             this.btnOnizleme.Size = new System.Drawing.Size(92, 108);
-            this.btnOnizleme.TabIndex = 15;
+            this.btnOnizleme.TabIndex = 9;
             this.btnOnizleme.Text = "Baskı Önizle";
             this.btnOnizleme.UseVisualStyleBackColor = false;
             this.btnOnizleme.Click += new System.EventHandler(this.btnOnizleme_Click);

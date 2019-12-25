@@ -185,5 +185,10 @@ namespace SOHATS
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
+        private void txtDogumYeri_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
+                 && !char.IsSeparator(e.KeyChar);
+        }
     }
 }

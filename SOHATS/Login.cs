@@ -26,8 +26,8 @@ namespace SOHATS
         private void btnGiris_Click(object sender, EventArgs e)
         {
             DatabaseControl databaseControl = new DatabaseControl();
-            txtKullanici.Text = "k1";
-            txtSifre.Text = "212121";
+            //txtKullanici.Text = "k1";
+            //txtSifre.Text = "212121";
             string kullanici_adi = txtKullanici.Text;
             string sifre = txtSifre.Text;
             if (kullanici_adi == "")

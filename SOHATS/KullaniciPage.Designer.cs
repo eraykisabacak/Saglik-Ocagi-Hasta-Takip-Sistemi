@@ -87,6 +87,7 @@
             // txtKullaniciKodu
             // 
             this.txtKullaniciKodu.Location = new System.Drawing.Point(183, 20);
+            this.txtKullaniciKodu.MaxLength = 9;
             this.txtKullaniciKodu.Name = "txtKullaniciKodu";
             this.txtKullaniciKodu.Size = new System.Drawing.Size(334, 29);
             this.txtKullaniciKodu.TabIndex = 1;
@@ -112,6 +113,7 @@
             // txtBabaAdi
             // 
             this.txtBabaAdi.Location = new System.Drawing.Point(183, 126);
+            this.txtBabaAdi.MaxLength = 20;
             this.txtBabaAdi.Name = "txtBabaAdi";
             this.txtBabaAdi.Size = new System.Drawing.Size(334, 29);
             this.txtBabaAdi.TabIndex = 4;
@@ -128,9 +130,11 @@
             // txtDogumYeri
             // 
             this.txtDogumYeri.Location = new System.Drawing.Point(183, 91);
+            this.txtDogumYeri.MaxLength = 50;
             this.txtDogumYeri.Name = "txtDogumYeri";
             this.txtDogumYeri.Size = new System.Drawing.Size(334, 29);
             this.txtDogumYeri.TabIndex = 3;
+            this.txtDogumYeri.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDogumYeri_KeyPress);
             // 
             // label4
             // 
@@ -162,6 +166,7 @@
             // txtAnneAdi
             // 
             this.txtAnneAdi.Location = new System.Drawing.Point(183, 161);
+            this.txtAnneAdi.MaxLength = 20;
             this.txtAnneAdi.Name = "txtAnneAdi";
             this.txtAnneAdi.Size = new System.Drawing.Size(334, 29);
             this.txtAnneAdi.TabIndex = 5;
@@ -178,6 +183,7 @@
             // txtGSM
             // 
             this.txtGSM.Location = new System.Drawing.Point(183, 231);
+            this.txtGSM.MaxLength = 11;
             this.txtGSM.Name = "txtGSM";
             this.txtGSM.Size = new System.Drawing.Size(334, 29);
             this.txtGSM.TabIndex = 7;
@@ -203,6 +209,7 @@
             // 
             // cbUnvan
             // 
+            this.cbUnvan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUnvan.FormattingEnabled = true;
             this.cbUnvan.Location = new System.Drawing.Point(657, 17);
             this.cbUnvan.Name = "cbUnvan";
@@ -212,6 +219,7 @@
             // txtAd
             // 
             this.txtAd.Location = new System.Drawing.Point(657, 55);
+            this.txtAd.MaxLength = 20;
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(334, 29);
             this.txtAd.TabIndex = 10;
@@ -228,6 +236,7 @@
             // txtSoyad
             // 
             this.txtSoyad.Location = new System.Drawing.Point(657, 88);
+            this.txtSoyad.MaxLength = 20;
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(334, 29);
             this.txtSoyad.TabIndex = 11;
@@ -306,6 +315,7 @@
             // 
             // cbCinsiyet
             // 
+            this.cbCinsiyet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCinsiyet.FormattingEnabled = true;
             this.cbCinsiyet.Items.AddRange(new object[] {
             "BAY",
@@ -326,6 +336,7 @@
             // 
             // cbMedeniHali
             // 
+            this.cbMedeniHali.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMedeniHali.FormattingEnabled = true;
             this.cbMedeniHali.Items.AddRange(new object[] {
             "EVLİ",
@@ -337,6 +348,7 @@
             // 
             // cbKanGrubu
             // 
+            this.cbKanGrubu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKanGrubu.FormattingEnabled = true;
             this.cbKanGrubu.Items.AddRange(new object[] {
             "0 Rh+",
@@ -377,6 +389,7 @@
             // txtAdres
             // 
             this.txtAdres.Location = new System.Drawing.Point(183, 318);
+            this.txtAdres.MaxLength = 255;
             this.txtAdres.Multiline = true;
             this.txtAdres.Name = "txtAdres";
             this.txtAdres.Size = new System.Drawing.Size(808, 130);
@@ -406,6 +419,7 @@
             // txtSifre
             // 
             this.txtSifre.Location = new System.Drawing.Point(546, 18);
+            this.txtSifre.MaxLength = 20;
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.Size = new System.Drawing.Size(217, 29);
             this.txtSifre.TabIndex = 2;
@@ -422,6 +436,7 @@
             // txtKullaniciAdi
             // 
             this.txtKullaniciAdi.Location = new System.Drawing.Point(154, 20);
+            this.txtKullaniciAdi.MaxLength = 20;
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Size = new System.Drawing.Size(217, 29);
             this.txtKullaniciAdi.TabIndex = 1;

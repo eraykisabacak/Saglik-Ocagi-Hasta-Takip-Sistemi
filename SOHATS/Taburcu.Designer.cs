@@ -49,7 +49,7 @@
             this.btnVazgec.Location = new System.Drawing.Point(17, 199);
             this.btnVazgec.Name = "btnVazgec";
             this.btnVazgec.Size = new System.Drawing.Size(105, 40);
-            this.btnVazgec.TabIndex = 4;
+            this.btnVazgec.TabIndex = 6;
             this.btnVazgec.Text = "Vazgeç";
             this.btnVazgec.UseVisualStyleBackColor = false;
             this.btnVazgec.Click += new System.EventHandler(this.btnGiris_Click);
@@ -69,7 +69,7 @@
             this.txtDosyaNo.Name = "txtDosyaNo";
             this.txtDosyaNo.ReadOnly = true;
             this.txtDosyaNo.Size = new System.Drawing.Size(281, 29);
-            this.txtDosyaNo.TabIndex = 6;
+            this.txtDosyaNo.TabIndex = 1;
             // 
             // label2
             // 
@@ -104,7 +104,7 @@
             this.txtTutar.Name = "txtTutar";
             this.txtTutar.ReadOnly = true;
             this.txtTutar.Size = new System.Drawing.Size(281, 29);
-            this.txtTutar.TabIndex = 14;
+            this.txtTutar.TabIndex = 5;
             // 
             // label5
             // 
@@ -122,7 +122,7 @@
             this.btnKaydet.Location = new System.Drawing.Point(322, 199);
             this.btnKaydet.Name = "btnKaydet";
             this.btnKaydet.Size = new System.Drawing.Size(105, 40);
-            this.btnKaydet.TabIndex = 15;
+            this.btnKaydet.TabIndex = 7;
             this.btnKaydet.Text = "Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = false;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
@@ -133,7 +133,7 @@
             this.dtpSevkTarihi.Location = new System.Drawing.Point(146, 50);
             this.dtpSevkTarihi.Name = "dtpSevkTarihi";
             this.dtpSevkTarihi.Size = new System.Drawing.Size(281, 29);
-            this.dtpSevkTarihi.TabIndex = 16;
+            this.dtpSevkTarihi.TabIndex = 2;
             // 
             // dtpCikisTarihi
             // 
@@ -141,7 +141,7 @@
             this.dtpCikisTarihi.Location = new System.Drawing.Point(146, 85);
             this.dtpCikisTarihi.Name = "dtpCikisTarihi";
             this.dtpCikisTarihi.Size = new System.Drawing.Size(281, 29);
-            this.dtpCikisTarihi.TabIndex = 17;
+            this.dtpCikisTarihi.TabIndex = 3;
             // 
             // cbOdeme
             // 
@@ -156,7 +156,7 @@
             this.cbOdeme.Location = new System.Drawing.Point(146, 120);
             this.cbOdeme.Name = "cbOdeme";
             this.cbOdeme.Size = new System.Drawing.Size(281, 32);
-            this.cbOdeme.TabIndex = 18;
+            this.cbOdeme.TabIndex = 4;
             // 
             // Taburcu
             // 
