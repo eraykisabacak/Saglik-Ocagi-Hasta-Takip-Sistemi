@@ -59,5 +59,10 @@ namespace SOHATS
                 formControl.Open(new HastaProcess(this, formControl));
             }
         }
+
+        private void rapor1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formControl.Open(new Rapor(this, formControl));
+        }
     }
 }

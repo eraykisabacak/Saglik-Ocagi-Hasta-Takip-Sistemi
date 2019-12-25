@@ -328,7 +328,6 @@ namespace SOHATS
         {
             using (SOHATSEntities3 context = new SOHATSEntities3())
             {
-                // try catch System.Data.Entity.Infrastructure.DbUpdateException
                 try
                 {
                     var entity = context.Entry(hasta);
@@ -417,6 +416,11 @@ namespace SOHATS
                     if (durum)
                     {
                         return context.hasta.Where(p => p.ad == ad && p.soyad == soyad).ToList();
+                        //return context.hasta.Where(p => p.ad.Contains(ad)).Single().ad.ToList();
+                        /*var Sonuc = from SOHATSEntities3 in SOHATSEntities3.hasta
+                                    where p.ad.Contains(ad)
+                                    select ad,soyad;
+                        return Sonuc;*/
                     }
                     else
                     {
@@ -446,6 +450,59 @@ namespace SOHATS
             using (SOHATSEntities3 context = new SOHATSEntities3())
             {
                 return (context.cikis.Select(p => p.id).Max()) + 1;
+            }
+        }
+
+        public List<RaporTaburcu> GetTaburcu(DateTime baslangic,DateTime bitis)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                List<RaporTaburcu> raporTaburcu = new List<RaporTaburcu>();
+
+                List<sevk> sevks =context.sevk.Where(t => t.sevktarihi > baslangic && 
+                                          t.sevktarihi < bitis)
+                                          .ToList();
+
+                foreach (sevk sevk in sevks)
+                {
+                    RaporTaburcu hasta = new RaporTaburcu();
+
+                    hasta.Dosyano = sevk.dosyano;
+                    hasta.Ad = this.GetHasta(sevk.dosyano).ad;
+                    hasta.Soyad = this.GetHasta(sevk.dosyano).soyad;
+                    hasta.Sevktarihi = sevk.sevktarihi;
+                    hasta.Poliklinik = sevk.poliklinik;
+                    hasta.Doktoradi = this.DoktorAdi(int.Parse(sevk.drkod)).ad;
+                    hasta.Doktorsoyad = this.DoktorAdi(int.Parse(sevk.drkod)).soyad;
+                    raporTaburcu.Add(hasta);
+                }
+                return raporTaburcu;
+            }
+        }
+
+        public List<RaporTaburcu> GetTaburcu(bool durum, DateTime baslangic, DateTime bitis)
+        {
+            using (SOHATSEntities3 context = new SOHATSEntities3())
+            {
+                List<RaporTaburcu> raporTaburcu = new List<RaporTaburcu>();
+                List<sevk> sevks = context.sevk.Where(p => p.sevktarihi > baslangic &&
+                                               p.sevktarihi < bitis &&
+                                               p.taburcu == durum.ToString())
+                                               .ToList();
+                foreach (sevk sevk in sevks)
+                {
+                    RaporTaburcu hasta = new RaporTaburcu();
+
+                    hasta.Dosyano = sevk.dosyano;
+                    hasta.Ad = this.GetHasta(sevk.dosyano).ad;
+                    hasta.Soyad = this.GetHasta(sevk.dosyano).soyad;
+                    hasta.Sevktarihi = sevk.sevktarihi;
+                    hasta.Poliklinik = sevk.poliklinik;
+                    hasta.Doktoradi = this.DoktorAdi(int.Parse(sevk.drkod)).ad;
+                    hasta.Doktorsoyad = this.DoktorAdi(int.Parse(sevk.drkod)).soyad;
+                    raporTaburcu.Add(hasta);
+                }
+                return raporTaburcu;
             }
         }
     }

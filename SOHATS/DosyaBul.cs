@@ -41,6 +41,11 @@ namespace SOHATS
         private void btnBul_Click(object sender, EventArgs e)
         {
             dgwHasta.Rows.Clear();
+            if(cbSecenek.Text == "")
+            {
+                MessageBox.Show("Lütfen bir seçim yapınız");
+                return;
+            }
             if(cbSecenek.SelectedIndex == 0)
             {
                 string ad = txtAd.Text != "" ? txtAd.Text : "0";

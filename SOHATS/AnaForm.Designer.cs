@@ -37,6 +37,7 @@
             this.hastaKabul = new System.Windows.Forms.ToolStripMenuItem();
             this.hastaİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.raporlar = new System.Windows.Forms.ToolStripMenuItem();
+            this.rapor1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,28 +71,28 @@
             // logout
             // 
             this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(180, 22);
+            this.logout.Size = new System.Drawing.Size(167, 22);
             this.logout.Text = "Logout";
             this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // poliklinikTanitma
             // 
             this.poliklinikTanitma.Name = "poliklinikTanitma";
-            this.poliklinikTanitma.Size = new System.Drawing.Size(180, 22);
+            this.poliklinikTanitma.Size = new System.Drawing.Size(167, 22);
             this.poliklinikTanitma.Text = "Poliklinik Tanıtma";
             this.poliklinikTanitma.Click += new System.EventHandler(this.poliklinikTanitma_Click);
             // 
             // kullanıcıTanıtma
             // 
             this.kullanıcıTanıtma.Name = "kullanıcıTanıtma";
-            this.kullanıcıTanıtma.Size = new System.Drawing.Size(180, 22);
+            this.kullanıcıTanıtma.Size = new System.Drawing.Size(167, 22);
             this.kullanıcıTanıtma.Text = "Kullanıcı Tanıtma";
             this.kullanıcıTanıtma.Click += new System.EventHandler(this.kullanıcıTanıtma_Click);
             // 
             // cikis
             // 
             this.cikis.Name = "cikis";
-            this.cikis.Size = new System.Drawing.Size(180, 22);
+            this.cikis.Size = new System.Drawing.Size(167, 22);
             this.cikis.Text = "Çıkış";
             this.cikis.Click += new System.EventHandler(this.cikis_Click);
             // 
@@ -113,9 +114,18 @@
             // 
             // raporlar
             // 
+            this.raporlar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rapor1ToolStripMenuItem});
             this.raporlar.Name = "raporlar";
             this.raporlar.Size = new System.Drawing.Size(63, 19);
             this.raporlar.Text = "Raporlar";
+            // 
+            // rapor1ToolStripMenuItem
+            // 
+            this.rapor1ToolStripMenuItem.Name = "rapor1ToolStripMenuItem";
+            this.rapor1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rapor1ToolStripMenuItem.Text = "Rapor1(gecici)";
+            this.rapor1ToolStripMenuItem.Click += new System.EventHandler(this.rapor1ToolStripMenuItem_Click);
             // 
             // AnaForm
             // 
@@ -148,6 +158,7 @@
         private System.Windows.Forms.ToolStripMenuItem kullanıcıTanıtma;
         private System.Windows.Forms.ToolStripMenuItem cikis;
         public System.Windows.Forms.ToolStripMenuItem hastaİşlemleriToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rapor1ToolStripMenuItem;
     }
 }
 
