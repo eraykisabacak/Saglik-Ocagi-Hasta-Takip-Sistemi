@@ -15,7 +15,7 @@ namespace SOHATS.DB
     public partial class hasta
     {
         public string tckimlikno { get; set; }
-        public string dosyano { get; set; }
+        public int dosyano { get; set; }
         public string ad { get; set; }
         public string soyad { get; set; }
         public string dogumyeri { get; set; }

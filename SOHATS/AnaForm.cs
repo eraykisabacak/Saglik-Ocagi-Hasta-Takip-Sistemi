@@ -27,8 +27,9 @@ namespace SOHATS
 
         public void GirisBasarisiz()
         {
-               menuStrip1.Enabled = false;
-               referanslar.Visible = false;
+            menuStrip1.Enabled = false;
+            referanslar.Visible = false;
+            referanslar.Enabled = false;
         }
 
         private void poliklinikTanitma_Click(object sender, EventArgs e)

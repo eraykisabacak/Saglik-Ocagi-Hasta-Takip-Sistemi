@@ -23,7 +23,6 @@ namespace SOHATS
         
         AnaForm anaForm;
         FormControl formControl;
-
         DatabaseControl databaseControl = new DatabaseControl();
 
         private void KulTanit_Load(object sender, EventArgs e)

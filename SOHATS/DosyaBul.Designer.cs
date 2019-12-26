@@ -35,9 +35,6 @@
             this.txtSoyad = new System.Windows.Forms.TextBox();
             this.btnBul = new System.Windows.Forms.Button();
             this.dgwHasta = new System.Windows.Forms.DataGridView();
-            this.pnlAd = new System.Windows.Forms.Panel();
-            this.pnlOther = new System.Windows.Forms.Panel();
-            this.txtArama = new System.Windows.Forms.TextBox();
             this.tckimlikno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dosyano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +44,9 @@
             this.babaadi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anneadi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cinsiyet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlAd = new System.Windows.Forms.Panel();
+            this.pnlOther = new System.Windows.Forms.Panel();
+            this.txtArama = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwHasta)).BeginInit();
             this.pnlAd.SuspendLayout();
             this.pnlOther.SuspendLayout();
@@ -82,6 +82,7 @@
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(194, 29);
             this.txtAd.TabIndex = 2;
+            this.txtAd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAd_KeyPress);
             // 
             // cbVe
             // 
@@ -101,6 +102,7 @@
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(194, 29);
             this.txtSoyad.TabIndex = 4;
+            this.txtSoyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAd_KeyPress);
             // 
             // btnBul
             // 
@@ -131,31 +133,6 @@
             this.dgwHasta.Name = "dgwHasta";
             this.dgwHasta.Size = new System.Drawing.Size(1144, 476);
             this.dgwHasta.TabIndex = 30;
-            // 
-            // pnlAd
-            // 
-            this.pnlAd.Controls.Add(this.txtAd);
-            this.pnlAd.Controls.Add(this.cbVe);
-            this.pnlAd.Controls.Add(this.txtSoyad);
-            this.pnlAd.Location = new System.Drawing.Point(477, 6);
-            this.pnlAd.Name = "pnlAd";
-            this.pnlAd.Size = new System.Drawing.Size(446, 40);
-            this.pnlAd.TabIndex = 7;
-            // 
-            // pnlOther
-            // 
-            this.pnlOther.Controls.Add(this.txtArama);
-            this.pnlOther.Location = new System.Drawing.Point(475, 3);
-            this.pnlOther.Name = "pnlOther";
-            this.pnlOther.Size = new System.Drawing.Size(448, 40);
-            this.pnlOther.TabIndex = 8;
-            // 
-            // txtArama
-            // 
-            this.txtArama.Location = new System.Drawing.Point(7, 8);
-            this.txtArama.Name = "txtArama";
-            this.txtArama.Size = new System.Drawing.Size(438, 29);
-            this.txtArama.TabIndex = 5;
             // 
             // tckimlikno
             // 
@@ -202,12 +179,38 @@
             this.cinsiyet.HeaderText = "Cinsiyet";
             this.cinsiyet.Name = "cinsiyet";
             // 
+            // pnlAd
+            // 
+            this.pnlAd.Controls.Add(this.txtAd);
+            this.pnlAd.Controls.Add(this.cbVe);
+            this.pnlAd.Controls.Add(this.txtSoyad);
+            this.pnlAd.Location = new System.Drawing.Point(491, 6);
+            this.pnlAd.Name = "pnlAd";
+            this.pnlAd.Size = new System.Drawing.Size(446, 40);
+            this.pnlAd.TabIndex = 7;
+            // 
+            // pnlOther
+            // 
+            this.pnlOther.Controls.Add(this.txtArama);
+            this.pnlOther.Location = new System.Drawing.Point(486, 5);
+            this.pnlOther.Name = "pnlOther";
+            this.pnlOther.Size = new System.Drawing.Size(448, 40);
+            this.pnlOther.TabIndex = 8;
+            // 
+            // txtArama
+            // 
+            this.txtArama.Location = new System.Drawing.Point(7, 8);
+            this.txtArama.Name = "txtArama";
+            this.txtArama.Size = new System.Drawing.Size(438, 29);
+            this.txtArama.TabIndex = 5;
+            this.txtArama.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArama_KeyPress);
+            // 
             // DosyaBul
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1163, 545);
+            this.ClientSize = new System.Drawing.Size(1161, 545);
             this.Controls.Add(this.pnlOther);
             this.Controls.Add(this.pnlAd);
             this.Controls.Add(this.dgwHasta);
@@ -215,6 +218,7 @@
             this.Controls.Add(this.cbSecenek);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "DosyaBul";
             this.Text = "< Dosya Bul >";

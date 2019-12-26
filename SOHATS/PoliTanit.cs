@@ -25,7 +25,7 @@ namespace SOHATS
 
         private void PoliTanit_Load(object sender, EventArgs e)
         {
-            SOHATSEntities3 context = new SOHATSEntities3();
+            SOHATSEntities context = new SOHATSEntities();
             
             List<poliklinik> poliks = context.poliklinik.ToList();
             foreach (var polik in poliks)

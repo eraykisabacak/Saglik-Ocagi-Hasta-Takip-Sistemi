@@ -15,7 +15,7 @@ namespace SOHATS.DB
     public partial class cikis
     {
         public int id { get; set; }
-        public string dosyano { get; set; }
+        public int dosyano { get; set; }
         public string sevktarihi { get; set; }
         public Nullable<System.DateTime> cikissaati { get; set; }
         public string odeme { get; set; }

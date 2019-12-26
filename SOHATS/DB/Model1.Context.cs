@@ -13,10 +13,10 @@ namespace SOHATS.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SOHATSEntities3 : DbContext
+    public partial class SOHATSEntities : DbContext
     {
-        public SOHATSEntities3()
-            : base("name=SOHATSEntities3")
+        public SOHATSEntities()
+            : base("name=SOHATSEntities")
         {
         }
     

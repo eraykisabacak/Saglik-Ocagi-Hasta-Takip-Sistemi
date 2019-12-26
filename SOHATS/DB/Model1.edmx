@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SOHATSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SOHATSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="cikis">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="dosyano" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="dosyano" Type="int" Nullable="false" />
           <Property Name="sevktarihi" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="cikissaati" Type="datetime" />
           <Property Name="odeme" Type="nvarchar" MaxLength="20" />
@@ -21,7 +21,7 @@
             <PropertyRef Name="tckimlikno" />
           </Key>
           <Property Name="tckimlikno" Type="nvarchar" MaxLength="11" Nullable="false" />
-          <Property Name="dosyano" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="dosyano" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ad" Type="nvarchar" MaxLength="15" />
           <Property Name="soyad" Type="nvarchar" MaxLength="15" />
           <Property Name="dogumyeri" Type="nvarchar" MaxLength="15" />
@@ -106,7 +106,8 @@
           <EntitySet Name="poliklinik" EntityType="Self.poliklinik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sevk" EntityType="Self.sevk" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SOHATSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -115,7 +116,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dosyano" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dosyano" Type="Int32" Nullable="false" />
           <Property Name="sevktarihi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="cikissaati" Type="DateTime" Precision="3" />
           <Property Name="odeme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -126,7 +127,7 @@
             <PropertyRef Name="tckimlikno" />
           </Key>
           <Property Name="tckimlikno" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="dosyano" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dosyano" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="soyad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="dogumyeri" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -191,7 +192,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="sevktarihi" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="sevktarihi" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dosyano" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="poliklinik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="saat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -203,7 +204,7 @@
           <Property Name="toplamtutar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="taburcu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="SOHATSEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SOHATSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="cikis" EntityType="Self.cikis" />
           <EntitySet Name="hasta" EntityType="Self.hasta" />
           <EntitySet Name="islem" EntityType="Self.islem" />
@@ -216,7 +217,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SOHATSModelStoreContainer" CdmEntityContainer="SOHATSEntities3">
+        <EntityContainerMapping StorageEntityContainer="SOHATSModelStoreContainer" CdmEntityContainer="SOHATSEntities">
           <EntitySetMapping Name="cikis">
             <EntityTypeMapping TypeName="SOHATSModel.cikis">
               <MappingFragment StoreEntitySet="cikis">

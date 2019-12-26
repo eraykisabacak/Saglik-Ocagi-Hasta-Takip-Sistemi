@@ -51,7 +51,7 @@ namespace SOHATS
             cikis cikis = new cikis()
             {
                 id = databaseControl.GetCikisId(),
-                dosyano = txtDosyaNo.Text,
+                dosyano = int.Parse(txtDosyaNo.Text),
                 sevktarihi = dtpSevkTarihi.Value.ToShortDateString().ToString(),
                 cikissaati = DateTime.Now,
                 odeme = cbOdeme.Text,

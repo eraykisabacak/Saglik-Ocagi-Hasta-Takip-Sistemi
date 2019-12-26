@@ -89,7 +89,7 @@ namespace SOHATS
             hasta hasta = new hasta
             {
                 tckimlikno = txtTC.Text,
-                dosyano = txtDosyaNo.Text,
+                dosyano = int.Parse(txtDosyaNo.Text),
                 ad = txtAd.Text,
                 soyad = txtSoyad.Text,
                 dogumyeri = txtDogumYeri.Text,
@@ -173,7 +173,7 @@ namespace SOHATS
 
         private void btnSil_Click(object sender, EventArgs e)
         {
-            databaseControl.DeleteHasta(new hasta{ dosyano = txtDosyaNo.Text,tckimlikno = txtTC.Text });
+            databaseControl.DeleteHasta(new hasta{ dosyano = int.Parse(txtDosyaNo.Text),tckimlikno = txtTC.Text });
             MessageBox.Show("Hasta Silindi");
             this.Close();
         }
@@ -225,7 +225,7 @@ namespace SOHATS
             hasta hasta = new hasta
             {
                 tckimlikno = txtTC.Text,
-                dosyano = txtDosyaNo.Text,
+                dosyano = int.Parse(txtDosyaNo.Text),
                 ad = txtAd.Text,
                 soyad = txtSoyad.Text,
                 dogumyeri = txtDogumYeri.Text,

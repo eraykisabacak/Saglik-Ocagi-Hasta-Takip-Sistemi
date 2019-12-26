@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3214c4d01d414c61a159150dea3440e5" Name="Diagram1">
+      <Diagram DiagramId="36e9eef1c77647128611c7db46e32d7e" Name="Diagram1">
         <EntityTypeShape EntityType="SOHATSModel.cikis" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SOHATSModel.hasta" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SOHATSModel.islem" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />

@@ -26,16 +26,38 @@ namespace SOHATS
 
         private void cbSecenek_SelectedValueChanged(object sender, EventArgs e)
         {
+            textTemizleme();
             if(cbSecenek.SelectedIndex == 0)
             {
                 pnlAd.Visible = true;
+                txtAd.MaxLength = 20;
+                txtSoyad.MaxLength = 20;
                 pnlOther.Visible = false;
             }
             else
             {
                 pnlAd.Visible = false;
                 pnlOther.Visible = true;
+                if(cbSecenek.SelectedIndex == 1)
+                {
+                    txtArama.MaxLength = 11;
+                }
+                else if(cbSecenek.SelectedIndex == 2)
+                {
+                    txtArama.MaxLength = 10;
+                }
+                else if (cbSecenek.SelectedIndex == 3)
+                {
+                    txtArama.MaxLength = 5;
+                }
             }
+        }
+
+        private void textTemizleme()
+        {
+            txtArama.Clear();
+            txtAd.Clear();
+            txtSoyad.Clear();
         }
 
         private void btnBul_Click(object sender, EventArgs e)
@@ -86,6 +108,11 @@ namespace SOHATS
                 else
                 {
                     // VEYA
+                    if(txtArama.Text == "")
+                    {
+                        MessageBox.Show("Lütfen değer giriniz");
+                        return;
+                    }
                     List<hasta> hastas = databaseControl.GetHastaAdSoyad(ad, soyad, false);
                     if (hastas.Count < 1)
                     {
@@ -109,6 +136,8 @@ namespace SOHATS
             }
             else if(cbSecenek.SelectedIndex == 1)
             {
+                if (!txtAramaKontrol())
+                    return;
                 string kimlikNo = txtArama.Text;
                 hasta hastas = databaseControl.GetHastaKimlikNo(kimlikNo);
 
@@ -128,6 +157,8 @@ namespace SOHATS
             }
             else if (cbSecenek.SelectedIndex == 2)
             {
+                if (!txtAramaKontrol())
+                    return;
                 string kurumSicilNo = txtArama.Text;
                 hasta hastas = databaseControl.GetHastaKurumSicilNo(kurumSicilNo);
 
@@ -147,6 +178,8 @@ namespace SOHATS
             }
             else if (cbSecenek.SelectedIndex == 3)
             {
+                if (!txtAramaKontrol())
+                    return;
                 string dosyaNo = txtArama.Text;
 
                 hasta hastas = databaseControl.GetHastaDosyaNo(dosyaNo);
@@ -172,6 +205,27 @@ namespace SOHATS
             if (hastas.tckimlikno == "0")
             {
                 MessageBox.Show("Kişi bulunamadı");
+                return false;
+            }
+            return true;
+        }
+
+        private void txtArama_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtAd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
+                 && !char.IsSeparator(e.KeyChar);
+        }
+
+        private bool txtAramaKontrol()
+        {
+            if(txtArama.Text == "")
+            {
+                MessageBox.Show("Değer giriniz");
                 return false;
             }
             return true;

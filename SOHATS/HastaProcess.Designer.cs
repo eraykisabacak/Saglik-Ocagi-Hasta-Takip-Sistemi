@@ -611,6 +611,7 @@
             this.Controls.Add(this.btnBul);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "HastaProcess";
             this.Text = "Hasta işlemleri";

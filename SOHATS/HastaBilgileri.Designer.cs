@@ -583,6 +583,7 @@
             this.Controls.Add(this.txtDosyaNo);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "HastaBilgileri";
             this.Text = "< Hasta Bilgileri >";

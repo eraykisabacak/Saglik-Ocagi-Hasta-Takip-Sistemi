@@ -86,6 +86,7 @@
             // 
             // txtKullaniciKodu
             // 
+            this.txtKullaniciKodu.Enabled = false;
             this.txtKullaniciKodu.Location = new System.Drawing.Point(183, 20);
             this.txtKullaniciKodu.MaxLength = 9;
             this.txtKullaniciKodu.Name = "txtKullaniciKodu";
@@ -545,6 +546,7 @@
             this.Controls.Add(this.txtKullaniciKodu);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "KullaniciPage";
             this.ShowIcon = false;
