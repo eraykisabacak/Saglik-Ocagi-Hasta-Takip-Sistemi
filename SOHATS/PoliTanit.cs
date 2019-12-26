@@ -37,8 +37,13 @@ namespace SOHATS
 
         private void cbPoliklinikAdi_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter )
             {
+                if (cbPoliklinikAdi.Text == "")
+                {
+                    MessageBox.Show("Lütfen bir poliklinik adı giriniz");
+                    return;
+                }
                 string poliklinikAdi = cbPoliklinikAdi.Text;
                 poliklinik p = databaseControl.GetPoliklinik(poliklinikAdi);
                 if(p.poliklinikadi == null)

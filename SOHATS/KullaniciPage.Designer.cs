@@ -118,6 +118,7 @@
             this.txtBabaAdi.Name = "txtBabaAdi";
             this.txtBabaAdi.Size = new System.Drawing.Size(334, 29);
             this.txtBabaAdi.TabIndex = 4;
+            this.txtBabaAdi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDogumYeri_KeyPress);
             // 
             // label3
             // 
@@ -171,6 +172,7 @@
             this.txtAnneAdi.Name = "txtAnneAdi";
             this.txtAnneAdi.Size = new System.Drawing.Size(334, 29);
             this.txtAnneAdi.TabIndex = 5;
+            this.txtAnneAdi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDogumYeri_KeyPress);
             // 
             // label6
             // 
@@ -224,6 +226,7 @@
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(334, 29);
             this.txtAd.TabIndex = 10;
+            this.txtAd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDogumYeri_KeyPress);
             // 
             // label9
             // 
@@ -241,6 +244,7 @@
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(334, 29);
             this.txtSoyad.TabIndex = 11;
+            this.txtSoyad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDogumYeri_KeyPress);
             // 
             // label10
             // 

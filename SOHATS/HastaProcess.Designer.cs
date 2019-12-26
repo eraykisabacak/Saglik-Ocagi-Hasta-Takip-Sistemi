@@ -122,6 +122,7 @@
             this.dtpSevkTarihi.Size = new System.Drawing.Size(220, 29);
             this.dtpSevkTarihi.TabIndex = 3;
             this.dtpSevkTarihi.Value = new System.DateTime(2019, 12, 25, 0, 0, 0, 0);
+            this.dtpSevkTarihi.ValueChanged += new System.EventHandler(this.cbPoliklinik_SelectedValueChanged);
             // 
             // label3
             // 

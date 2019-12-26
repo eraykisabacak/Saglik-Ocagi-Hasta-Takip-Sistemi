@@ -25,10 +25,15 @@ namespace SOHATS
                 {
                     kullanici = context.kullanici.Where(p => p.username == kullaniciAdi && p.sifre == sifre).First();
                 }
+                catch (System.Data.Entity.Core.EntityException)
+                {
+                    return new List<bool> { false, false, false };
+                }
                 catch (System.InvalidOperationException)
                 {
                     return new List<bool> { false, false };
                 }
+                
                 if(Convert.ToBoolean(kullanici.yetki))
                 {
                     return new List<bool> { true, true };
@@ -66,7 +71,6 @@ namespace SOHATS
                 catch (System.InvalidOperationException)
                 {
                     return new sevk { dosyano = null };
-
                 }
             }
         }
@@ -147,11 +151,11 @@ namespace SOHATS
             }
         }
 
-        public sevk Sira(string poliklinik)
+        public sevk Sira(string poliklinik,DateTime sevkTarihi)
         {
             using (SOHATSEntities context = new SOHATSEntities())
             {
-                List<sevk> sevkler = context.sevk.Where(p => p.poliklinik == poliklinik && p.sevktarihi == DateTime.Today).ToList();
+                List<sevk> sevkler = context.sevk.Where(p => p.poliklinik == poliklinik && p.sevktarihi == sevkTarihi).ToList();
                 sevk sevk = new sevk();
                 foreach(sevk sevki in sevkler)
                 {

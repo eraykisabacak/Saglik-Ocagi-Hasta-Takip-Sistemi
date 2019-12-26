@@ -18,8 +18,8 @@ namespace SOHATS
             InitializeComponent();
             kullanici = kullanicis;
 
-            dtpİseBaslama.MaxDate = DateTime.Today;
-            dtpDogumTarihi.MaxDate = DateTime.Today;
+            dtpİseBaslama.MaxDate = DateTime.Today.AddHours(DateTime.Now.Hour).AddMinutes(DateTime.Now.Minute);
+            dtpDogumTarihi.MaxDate = DateTime.Today.AddHours(DateTime.Now.Hour).AddMinutes(DateTime.Now.Minute);
             
         }
 
@@ -122,6 +122,12 @@ namespace SOHATS
 
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
+            if (!Kontrol())
+            {
+                MessageBox.Show("Lütfen tüm yerleri doldurunuz");
+                return;
+            }
+            
             if (btnGuncelle.Text == "Güncelle")
             {
                 databaseControl.UpdateKullanici(new kullanici
@@ -189,6 +195,20 @@ namespace SOHATS
         {
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
                  && !char.IsSeparator(e.KeyChar);
+        }
+
+        private bool Kontrol()
+        {
+            if (txtTC.Text == "" |
+                txtAd.Text == "" ||
+                txtSoyad.Text == "" ||
+                txtAdres.Text == "" ||
+                cbCinsiyet.Text == "" ||
+                txtGSM.Text == "" ||
+                txtKullaniciAdi.Text == "" ||
+                txtSifre.Text == "")
+                return false;
+            return true;
         }
     }
 }

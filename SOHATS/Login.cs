@@ -54,6 +54,11 @@ namespace SOHATS
             }
             else
             {
+                if (!kontrol[2])
+                {
+                    MessageBox.Show("Veri tabanında sıkıntı oluştu");
+                    Application.Exit();
+                }
                 MessageBox.Show("Yanlış Kullanıcı ad ve/veya şifre", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtKullanici.Text = "";
                 txtSifre.Text = "";

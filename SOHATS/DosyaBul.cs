@@ -108,7 +108,7 @@ namespace SOHATS
                 else
                 {
                     // VEYA
-                    if(txtArama.Text == "")
+                    if(txtAd.Text == "" && txtSoyad.Text == "")
                     {
                         MessageBox.Show("Lütfen değer giriniz");
                         return;

@@ -30,14 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.cbPoliklinikAdi = new System.Windows.Forms.ComboBox();
-            this.cbGecerli = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 51);
+            this.label1.Location = new System.Drawing.Point(17, 67);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 24);
@@ -47,23 +46,12 @@
             // cbPoliklinikAdi
             // 
             this.cbPoliklinikAdi.FormattingEnabled = true;
-            this.cbPoliklinikAdi.Location = new System.Drawing.Point(132, 48);
+            this.cbPoliklinikAdi.Location = new System.Drawing.Point(134, 64);
             this.cbPoliklinikAdi.Margin = new System.Windows.Forms.Padding(6);
             this.cbPoliklinikAdi.Name = "cbPoliklinikAdi";
             this.cbPoliklinikAdi.Size = new System.Drawing.Size(219, 32);
             this.cbPoliklinikAdi.TabIndex = 1;
             this.cbPoliklinikAdi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbPoliklinikAdi_KeyDown);
-            // 
-            // cbGecerli
-            // 
-            this.cbGecerli.AutoSize = true;
-            this.cbGecerli.Location = new System.Drawing.Point(152, 82);
-            this.cbGecerli.Margin = new System.Windows.Forms.Padding(6);
-            this.cbGecerli.Name = "cbGecerli";
-            this.cbGecerli.Size = new System.Drawing.Size(178, 28);
-            this.cbGecerli.TabIndex = 2;
-            this.cbGecerli.Text = "Geçerli / Geçersiz";
-            this.cbGecerli.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -85,7 +73,6 @@
             this.ClientSize = new System.Drawing.Size(373, 129);
             this.ControlBox = false;
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbGecerli);
             this.Controls.Add(this.cbPoliklinikAdi);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -103,7 +90,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbPoliklinikAdi;
-        private System.Windows.Forms.CheckBox cbGecerli;
         private System.Windows.Forms.Label label2;
     }
 }

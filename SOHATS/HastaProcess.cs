@@ -259,7 +259,9 @@ namespace SOHATS
 
         private void cbPoliklinik_SelectedValueChanged(object sender, EventArgs e)
         {
-            sevk sevk = databaseControl.Sira(cbPoliklinik.Text);
+            if(cbPoliklinik.Text == "")            
+                return;
+            sevk sevk = databaseControl.Sira(cbPoliklinik.Text,dtpSevkTarihi.Value);
 
             if(sevk == null)
             {
@@ -323,6 +325,7 @@ namespace SOHATS
             }
             if(cbYapilanİslem.Text == "")
             {
+                cbYapilanİslem.SelectedItem = 0;
                 durum = false;
             }
             if(cbDrKodu.Text == "")
@@ -355,7 +358,6 @@ namespace SOHATS
             cbYapilanİslem.Text = "";
             cbDrKodu.Text = "";
             nudMiktar.Value = 1;
-            txtBirimFiyat.Text = "";
         }
 
         private void btnTaburcu_Click(object sender, EventArgs e)
