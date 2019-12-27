@@ -347,7 +347,7 @@ namespace SOHATS
                                          sevk.miktar,
                                          sevk.birimfiyat,
                                          sevk.id);
-            tutar += int.Parse(sevk.birimfiyat);
+            tutar += int.Parse(sevk.birimfiyat) * int.Parse(sevk.miktar);
             lblTutar.Text = tutar + " TL";
         }
 
