@@ -11,28 +11,28 @@ script.sql dosyasından Microsoft Management Studio'ya giderek New Query'ye tık
 ## Uygulama İçi Fotoğraflar
 
 ### Login
-![]()
+![](https://github.com/eraykisabacak/Saglik-Ocagi-Hasta-Takip-Sistemi/blob/master/login1.png)
 
 ### Login Uyarısı
-![]()
+![](https://github.com/eraykisabacak/Saglik-Ocagi-Hasta-Takip-Sistemi/blob/master/uyari2.png)
 
 ### Hasta İşlemleri
-![]()
+![](https://github.com/eraykisabacak/Saglik-Ocagi-Hasta-Takip-Sistemi/blob/master/hasta3.png)
 
 ### Taburcu Formu
-![]()
+![](https://github.com/eraykisabacak/Saglik-Ocagi-Hasta-Takip-Sistemi/blob/master/taburcu4.png)
 
 ### Taburcu Formu
-![]()
+![](https://github.com/eraykisabacak/Saglik-Ocagi-Hasta-Takip-Sistemi/blob/master/taburcu5.png)
 
 ### Poliklinik Tanıtma
-![]()
+![](https://github.com/eraykisabacak/Saglik-Ocagi-Hasta-Takip-Sistemi/blob/master/poliklinik6.png)
 
 ### Kullanıcı Tanıtma
-![]()
+![](https://github.com/eraykisabacak/Saglik-Ocagi-Hasta-Takip-Sistemi/blob/master/kullanici7.png)
 
 ### Hasta Bulma
-![]()
+![](https://github.com/eraykisabacak/Saglik-Ocagi-Hasta-Takip-Sistemi/blob/master/arabul8.png)
 
 ## Detaylı Bilgiler
 txtDosyaNo: Hasta ya ait unique numara dosya no metin kutusunun key press eventi enter tuşunu döndürürse hasta bilgileri formdaki alanlara doldurulur.
