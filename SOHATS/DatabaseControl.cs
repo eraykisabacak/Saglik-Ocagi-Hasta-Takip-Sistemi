@@ -31,16 +31,16 @@ namespace SOHATS
                 }
                 catch (System.InvalidOperationException)
                 {
-                    return new List<bool> { false, false };
+                    return new List<bool> { false, false, true };
                 }
                 
                 if(Convert.ToBoolean(kullanici.yetki))
                 {
-                    return new List<bool> { true, true };
+                    return new List<bool> { true, true, true };
                 }
                 else
                 {
-                    return new List<bool> { true, false };
+                    return new List<bool> { true, false, true };
                 }
             }
         }
