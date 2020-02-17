@@ -1,3 +1,5 @@
+![Demo](https://www.youtube.com/watch?v=ydSiWok7wN8&t=95s&ab_channel=ErayK%C4%B1sabacak)
+![Blog](http://eraykisabacak.com/c-ile-saglik-ocagi-hasta-takip-sistemi-health-center-patient-tracking-system-hbys/)
 # Saglik-Ocagi-Hasta-Takip-Sistemi
 Sağlık Ocağı Hasta Takip Sistemi - Health Center Patient Tracking System - HBYS
 
